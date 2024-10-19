@@ -1,0 +1,18 @@
+.formatted {
+    text-size-adjust: "none";
+    tab-size: 2;
+    margin: 0;
+    font-family: inherit;
+    counter-reset: step;
+    counter-increment: step 0;
+    font-variant-ligatures: none;
+}
+
+.editor {
+    -webkit-text-fill-color: transparent;
+    caret-color: red;
+    // color: green;
+    border: none;
+    overflow: hidden;
+    outline: none;
+}

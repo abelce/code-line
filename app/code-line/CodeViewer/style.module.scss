@@ -1,0 +1,33 @@
+.formatted {
+    text-size-adjust: none;
+    tab-size: 2;
+    margin: 0;
+    text-wrap-mode: wrap;
+
+    :global {
+        pre {
+            margin: 0;
+            /* // background-color: initial !important; */
+            font-family: inherit;
+            white-space: pre-wrap
+        }
+
+        code {
+            font-family: inherit;
+        }
+
+        .line {
+            display: inline-block;
+            width: calc(100% + 32px);
+            padding: 0 16px;
+            margin: 0 -16px;
+            transition: width .2s, padding .2s, margin .2s
+        }
+    }
+}
+
+.viewer {
+    /* // -webkit-text-fill-color: transparent;
+    // caret-color: red;
+    // font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
+}
