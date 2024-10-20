@@ -6,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { lngList, paddingList, themeList } from "../../config";
+import { backgroundList, lngList, paddingList, themeList } from "../../config";
 import { SearchSelect } from "@/components/SearchSelect";
 
 interface SettingProps {
@@ -16,6 +16,8 @@ interface SettingProps {
   updatePadding: (padding: number) => void;
   theme: string;
   updateTheme: (theme: string) => void;
+  backdrop: string;
+  updateBackdrop: (backdrop: string) => void;
 }
 
 const Item = ({ label, children }: { label: string; children: ReactNode }) => {
@@ -33,7 +35,7 @@ const Setting = (props: SettingProps) => {
       <Item label="内边距">
         <Select
           value={String(props.padding)}
-          onValueChange={(pad) => props.updatePadding(+pad)}
+          onValueChange={(pad: string | number) => props.updatePadding(+pad)}
         >
           <SelectTrigger className="w-[160px]">
             <SelectValue placeholder="内边距" />
@@ -63,6 +65,15 @@ const Setting = (props: SettingProps) => {
           value={String(props.theme)}
           onChange={props.updateTheme}
           options={themeList}
+        ></SearchSelect>
+      </Item>
+      <Item label="背景">
+        <SearchSelect
+          text="主题"
+          btnClassName="w-[160px]"
+          value={props.backdrop}
+          onChange={props.updateBackdrop}
+          options={backgroundList}
         ></SearchSelect>
       </Item>
     </div>

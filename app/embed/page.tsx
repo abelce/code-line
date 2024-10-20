@@ -1,9 +1,10 @@
 "use client";
+import { Mode } from "../code-line/Editor/inde";
 import Frame from "../code-line/Frame";
 import useGetInitState from "@/hooks/useGetInitState";
 
 const Embed = () => {
-  const { code, padding, lang, theme } = useGetInitState();
+  const { code, padding, lang, theme, title, backdrop } = useGetInitState();
 
   return (
     <div className="w-screen h-screen">
@@ -12,7 +13,9 @@ const Embed = () => {
         code={code}
         lang={lang}
         theme={theme}
-        background="linear-gradient(140deg, rgb(165, 142, 251), rgb(233, 191, 248))"
+        title={title}
+        backdrop={backdrop}
+        mode={Mode.View}
       ></Frame>
     </div>
   );

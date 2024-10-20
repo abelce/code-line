@@ -13,15 +13,14 @@ const useUpdateSearchParams = () => {
 
   const baseSearchParams = useMemo(() => {
     return new URLSearchParams(_searchParams);
-  }, [])
+  }, []);
 
   const updateSearchParams = (key: string, value: any) => {
-   
-    baseSearchParams.set(key, value);
-    if (key === "code") {
-      console.log("new Code:", value);
+    if (value === "" || value === undefined) {
+      baseSearchParams.delete(key);
+    } else {
+      baseSearchParams.set(key, value);
     }
-    console.log(baseSearchParams.get("code"));
 
     replace(`${pathname}?${baseSearchParams.toString()}`);
   };

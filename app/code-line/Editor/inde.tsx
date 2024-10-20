@@ -3,8 +3,13 @@ import CodeViewer, { CodeViewerProps, commonStyle } from "../CodeViewer";
 import { cn } from "@/lib/utils";
 import styles from "./style.module.scss";
 
+export enum Mode {
+  Edit = "edit",
+  View = "view",
+}
 export interface EditorProps extends CodeViewerProps {
   onChange?: (code: string) => void;
+  mode: Mode
 }
 
 const Editor = (props: EditorProps) => {
@@ -28,22 +33,24 @@ const Editor = (props: EditorProps) => {
         theme={props.theme}
         className="row-start-1 row-end-2 col-start-1 col-end-2"
       />
-      <textarea
-        tabIndex={-1}
-        autoComplete="off"
-        autoCorrect="off"
-        spellCheck={false}
-        autoCapitalize="off"
-        className={cn(
-          "bg-transparent resize-none row-start-1 row-end-2 col-start-1 col-end-2 whitespace-pre-wrap",
-          commonStyle,
-          styles.editor
-        )}
-        ref={ref}
-        value={props.code}
-        onChange={handleChange}
-        onFocus={onFocus}
-      />
+      {props.mode === Mode.Edit ? (
+        <textarea
+          tabIndex={-1}
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck={false}
+          autoCapitalize="off"
+          className={cn(
+            "bg-transparent resize-none row-start-1 row-end-2 col-start-1 col-end-2 whitespace-pre-wrap",
+            commonStyle,
+            styles.editor
+          )}
+          ref={ref}
+          value={props.code}
+          onChange={handleChange}
+          onFocus={onFocus}
+        />
+      ) : null}
     </div>
   );
 };
