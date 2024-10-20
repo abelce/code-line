@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode, useEffect, useMemo, useRef } from "react";
+import { CSSProperties, useMemo } from "react";
 import styles from "./style.module.scss";
 import { cn } from "@/lib/utils";
 import Editor, { EditorProps } from "../Editor/inde";
@@ -16,7 +16,7 @@ const Frame = (props: Props) => {
       padding: `${padding}px`,
       background: background,
     };
-  }, [padding]);
+  }, [background, padding]);
 
   return (
     <div className="relative">
