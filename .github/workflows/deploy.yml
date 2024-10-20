@@ -1,0 +1,52 @@
+name: Docker Image CI
+
+on:
+  push: # push 时触发ci
+    branches: [release] # 作用于main分支
+  # schedule:
+  #   - cron: '0 23 * * *' # 国际时间每天23点运行一次
+  # pull_request:
+  #   branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 拉取main分支代码
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # 制作docker镜像并推送到阿里云容器镜像服务
+      - name: build and push docker image
+        run: |
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+          sh docker.sh
+          docker logout
+      # 登录远程服务器，拉取镜像，制作并重启容器
+      # https://github.com/marketplace/actions/remote-ssh-commands
+      - name: ssh remote deploy
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd ~/devdenv
+            echo -e "1.docker login start==>"
+            echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+            echo -e "git.sh"
+            sh git.sh
+
+            echo -e "2.docker pull code-line==>"
+            docker-compose pull code-line
+
+            echo -e "3.docker stop code-line ==>"
+            docker-compose stop code-line
+
+            echo -e "6.docker up -d code-line==>"
+            docker-compose up -d code-line
+
+          host: ${{ secrets.HOST }}
+          user: ${{ secrets.USER }}
+          pass: ${{ secrets.PASSWORD }}
+
