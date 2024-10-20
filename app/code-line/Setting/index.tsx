@@ -6,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { lngList, paddingList, themeList } from "../config";
+import { lngList, paddingList, themeList } from "../../config";
 import { SearchSelect } from "@/components/SearchSelect";
 
 interface SettingProps {

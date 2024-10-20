@@ -3,7 +3,7 @@ import CodeViewer, { CodeViewerProps, commonStyle } from "../CodeViewer";
 import { cn } from "@/lib/utils";
 import styles from "./style.module.scss";
 
-interface EditorProps extends CodeViewerProps {
+export interface EditorProps extends CodeViewerProps {
   onChange?: (code: string) => void;
 }
 

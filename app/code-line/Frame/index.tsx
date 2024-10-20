@@ -1,15 +1,16 @@
-import { CSSProperties, ReactNode, useMemo } from "react";
+import { CSSProperties, ReactNode, useEffect, useMemo, useRef } from "react";
 import styles from "./style.module.scss";
 import { cn } from "@/lib/utils";
+import Editor, { EditorProps } from "../Editor/inde";
 
-interface Props {
+interface Props extends EditorProps {
   padding: number;
-  background: string;
-  children: ReactNode;
+  background: string; 
 }
 
 const Frame = (props: Props) => {
-  const { padding, background, children } = props;
+  const { padding, background, code, lang, theme } = props;
+ 
   const contentStyles = useMemo((): CSSProperties => {
     return {
       padding: `${padding}px`,
@@ -20,7 +21,7 @@ const Frame = (props: Props) => {
   return (
     <div className="relative">
       <div className={cn("rounded")} style={contentStyles}>
-        <div className="rounded">
+        <div>
           <div className={styles.header}>
             <div className="flex gap-1">
               <div className="h-3 w-3 rounded-full bg-gray-400"></div>
@@ -31,7 +32,7 @@ const Frame = (props: Props) => {
               <input className="w-full bg-transparent text-center text-sm outline-0" />
             </div>
           </div>
-          {children}
+          <Editor code={code} lang={lang} theme={theme} onChange={props.onChange}></Editor>
         </div>
       </div>
     </div>

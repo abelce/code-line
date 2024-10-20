@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { codeToHtml } from "shiki";
 import { cn } from "@/lib/utils";
 import styles from "./style.module.scss";
+import { CodeLineEvent, event_calc_frame_height } from "../event";
+import _throttle from "lodash";
 
 export interface CodeViewerProps {
   code: string;
@@ -28,12 +30,29 @@ const CodeViewer = ({
         lang: lang,
         theme,
       });
-
       setHtml(html);
     };
 
     load();
   }, [code, lang, theme]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      CodeLineEvent.emit(event_calc_frame_height)
+    });
+  }, [html]);
+
+  // useEffect(() => {
+  //   const resize = _throttle(() => {
+  //     // CodeLineEvent.emit(event_calc_frame_height);
+  //   }, 500);
+
+  //   addEventListener("resize", resize);
+
+  //   return () => {
+  //     removeEventListener("resize", resize);
+  //   };
+  // }, []);
 
   return (
     <div
