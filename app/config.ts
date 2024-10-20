@@ -854,7 +854,7 @@ export const lngList = [
     value: "zig",
   },
 ];
-
+export const lightThemeCaretColor = "rgb(239 68 68)";
 export const themeList = [
   { label: "Andromeeda", value: "andromeeda", background: "#23262E" },
   { label: "Aurora X", value: "aurora-x", background: "#07090F" },
@@ -868,6 +868,7 @@ export const themeList = [
     label: "Catppuccin Latte",
     value: "catppuccin-latte",
     background: "#eff1f5",
+    caretColor: lightThemeCaretColor,
   },
   {
     label: "Catppuccin Macchiato",
@@ -895,6 +896,7 @@ export const themeList = [
     label: "Everforest Light",
     value: "everforest-light",
     background: "#fdf6e3",
+    caretColor: lightThemeCaretColor,
   },
   {
     label: "GitHub Dark Default",
@@ -916,40 +918,39 @@ export const themeList = [
     label: "GitHub Light Default",
     value: "github-light-default",
     background: "#ffffff",
+    caretColor: lightThemeCaretColor,
   },
   {
     label: "GitHub Light High Contrast",
     value: "github-light-high-contrast",
     background: "#ffffff",
+    caretColor: lightThemeCaretColor,
   },
-  { label: "GitHub Light", value: "github-light", background: "#fff" },
+  {
+    label: "GitHub Light",
+    value: "github-light",
+    background: "#fff",
+    caretColor: lightThemeCaretColor,
+  },
   { label: "Houston", value: "houston", background: "#17191e" },
-  {
-    label: "Kanagawa Dragon",
-    value: "kanagawa-dragon",
-    background: "#181616",
-  },
-  {
-    label: "Kanagawa Lotus",
-    value: "kanagawa-lotus",
-    background: "#F2ECBC",
-  },
-  {
-    label: "Kanagawa Wave",
-    value: "kanagawa-wave",
-    background: "#1F1F28",
-  },
   { label: "LaserWave", value: "laserwave", background: "#27212e" },
-  { label: "Light Plus", value: "light-plus", background: "#FFFFFF" },
+  {
+    label: "Light Plus",
+    value: "light-plus",
+    background: "#FFFFFF",
+    caretColor: lightThemeCaretColor,
+  },
   {
     label: "Material Theme Darker",
     value: "material-theme-darker",
     background: "#212121",
+    caretColor: lightThemeCaretColor,
   },
   {
     label: "Material Theme Lighter",
     value: "material-theme-lighter",
     background: "#FAFAFA",
+    caretColor: lightThemeCaretColor,
   },
   {
     label: "Material Theme Ocean",
@@ -967,7 +968,12 @@ export const themeList = [
     background: "#263238",
   },
   { label: "Min Dark", value: "min-dark", background: "#1f1f1f" },
-  { label: "Min Light", value: "min-light", background: "#ffffff" },
+  {
+    label: "Min Light",
+    value: "min-light",
+    background: "#ffffff",
+    caretColor: lightThemeCaretColor,
+  },
   { label: "Monokai", value: "monokai", background: "#272822" },
   { label: "Night Owl", value: "night-owl", background: "#011627" },
   { label: "Nord", value: "nord", background: "#2e3440" },
@@ -976,7 +982,12 @@ export const themeList = [
     value: "one-dark-pro",
     background: "#282c34",
   },
-  { label: "One Light", value: "one-light", background: "#FAFAFA" },
+  {
+    label: "One Light",
+    value: "one-light",
+    background: "#FAFAFA",
+    caretColor: lightThemeCaretColor,
+  },
   { label: "Plastic", value: "plastic", background: "#21252B" },
   { label: "Poimandres", value: "poimandres", background: "#1b1e28" },
   { label: "Red", value: "red", background: "#390000" },
@@ -997,6 +1008,7 @@ export const themeList = [
     label: "Snazzy Light",
     value: "snazzy-light",
     background: "#FAFBFC",
+    caretColor: lightThemeCaretColor,
   },
   {
     label: "Solarized Dark",
@@ -1007,6 +1019,7 @@ export const themeList = [
     label: "Solarized Light",
     value: "solarized-light",
     background: "#FDF6E3",
+    caretColor: lightThemeCaretColor,
   },
   {
     label: "Synthwave '84",
@@ -1029,6 +1042,7 @@ export const themeList = [
     label: "Vitesse Light",
     value: "vitesse-light",
     background: "#ffffff",
+    caretColor: lightThemeCaretColor,
   },
 ];
 
@@ -1060,6 +1074,14 @@ export const backgroundList = [
   {
     label: "Amaranthus",
     value: "linear-gradient(to right, rgb(192, 38, 211), rgb(147, 51, 234))",
+  },
+  {
+    label: "Clay",
+    value: "linear-gradient(to right, rgb(212, 212, 212), rgb(168, 162, 158))",
+  },
+  {
+    label: "Soil",
+    value: "linear-gradient(to right, rgb(120, 113, 108), rgb(68, 64, 60))",
   },
   {
     label: "Silver",

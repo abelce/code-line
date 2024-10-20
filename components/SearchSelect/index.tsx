@@ -19,17 +19,32 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
+interface Option {
+  label: string;
+  value: string | number;
+}
 interface Props<T> {
   btnClassName?: string;
   text: ReactNode;
   value?: T;
   onChange: (value: T) => void;
-  options: { label: string; value: string | number }[];
+  options: Option[];
+  optionRender?: (item: Option) => ReactNode;
 }
 
 export function SearchSelect<T>(props: Props<T>) {
   const { text, value, onChange, options = [], btnClassName } = props;
   const [open, setOpen] = React.useState(false);
+
+  const optionRender = (option?: Option) => {
+    if (!option) {
+      return text;
+    }
+    if (typeof props.optionRender === "function") {
+      return props.optionRender(option);
+    }
+    return option.label;
+  };
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -40,9 +55,9 @@ export function SearchSelect<T>(props: Props<T>) {
           aria-expanded={open}
           className={cn("!inline-flex !justify-between", btnClassName)}
         >
-          <span className="line-clamp-1">
+          <span className="line-clamp-1 flex items-center">
             {value
-              ? options.find((option) => option.value === value)?.label
+              ? optionRender(options.find((option) => option.value === value))
               : text}
           </span>
           <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -63,7 +78,8 @@ export function SearchSelect<T>(props: Props<T>) {
                     setOpen(false);
                   }}
                 >
-                  {option.label}
+                  {optionRender(option)}
+
                   <CheckIcon
                     className={cn(
                       "ml-auto h-4 w-4",

@@ -32,6 +32,33 @@ const Item = ({ label, children }: { label: string; children: ReactNode }) => {
 const Setting = (props: SettingProps) => {
   return (
     <div className="absolute top-8 left-0 border w-[300px] p-4 rounded">
+      <Item label="背景">
+        <SearchSelect
+          text="主题"
+          btnClassName="w-[160px]"
+          value={props.backdrop}
+          onChange={props.updateBackdrop}
+          options={backgroundList}
+          optionRender={(option) => (
+            <>
+              <div
+                style={{ background: option.value }}
+                className="rounded-full w-[16px] h-[16px] mr-[4px]"
+              ></div>
+              {option.label}
+            </>
+          )}
+        ></SearchSelect>
+      </Item>
+      <Item label="主题">
+        <SearchSelect
+          text="主题"
+          btnClassName="w-[160px]"
+          value={String(props.theme)}
+          onChange={props.updateTheme}
+          options={themeList}
+        ></SearchSelect>
+      </Item>
       <Item label="内边距">
         <Select
           value={String(props.padding)}
@@ -56,24 +83,6 @@ const Setting = (props: SettingProps) => {
           value={String(props.lang)}
           onChange={props.updateLng}
           options={lngList}
-        ></SearchSelect>
-      </Item>
-      <Item label="主题">
-        <SearchSelect
-          text="主题"
-          btnClassName="w-[160px]"
-          value={String(props.theme)}
-          onChange={props.updateTheme}
-          options={themeList}
-        ></SearchSelect>
-      </Item>
-      <Item label="背景">
-        <SearchSelect
-          text="主题"
-          btnClassName="w-[160px]"
-          value={props.backdrop}
-          onChange={props.updateBackdrop}
-          options={backgroundList}
         ></SearchSelect>
       </Item>
     </div>

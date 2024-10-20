@@ -102,24 +102,26 @@ const CodeLine = () => {
   }, [updateSearchParams]);
 
   return (
-    <div className="h-screen w-screen relative p-8">
-      <div className="ml-[324px]" ref={_frameContainerRef}>
-        <div className="flex justify-center">
-          <Resizeable width={width} onWidthChange={updateWidth}>
-            <div ref={_frameRef}>
-              <Frame
-                padding={padding}
-                code={code}
-                onChange={updateCode}
-                lang={lang}
-                theme={theme}
-                title={title}
-                updateTitle={updateTitle}
-                backdrop={backdrop}
-                mode={Mode.Edit}
-              ></Frame>
-            </div>
-          </Resizeable>
+    <div className="relative h-full">
+      <div className="ml-[324px] h-full overflow-y-auto">
+        <div className="m-8" ref={_frameContainerRef}>
+          <div className="flex justify-center">
+            <Resizeable width={width} onWidthChange={updateWidth}>
+              <div ref={_frameRef}>
+                <Frame
+                  padding={padding}
+                  code={code}
+                  onChange={updateCode}
+                  lang={lang}
+                  theme={theme}
+                  title={title}
+                  updateTitle={updateTitle}
+                  backdrop={backdrop}
+                  mode={Mode.Edit}
+                ></Frame>
+              </div>
+            </Resizeable>
+          </div>
         </div>
       </div>
       <Setting
