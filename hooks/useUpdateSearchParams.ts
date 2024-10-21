@@ -16,11 +16,12 @@ const useUpdateSearchParams = () => {
   }, []);
 
   const updateSearchParams = (key: string, value: any) => {
-    if (value === "" || value === undefined) {
-      baseSearchParams.delete(key);
-    } else {
-      baseSearchParams.set(key, value);
-    }
+    // if (value === "" || value === undefined) {
+    //   baseSearchParams.delete(key);
+    // } else {
+    //   baseSearchParams.set(key, value);
+    // }
+    baseSearchParams.set(key, value);
 
     replace(`${pathname}?${baseSearchParams.toString()}`);
   };

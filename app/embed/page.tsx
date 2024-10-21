@@ -4,7 +4,7 @@ import Frame from "../code-line/Frame";
 import useGetInitState from "@/hooks/useGetInitState";
 
 const Embed = () => {
-  const { code, padding, lang, theme, title, backdrop } = useGetInitState();
+  const { code, padding, lang, theme, title, backdrop, copyBtn } = useGetInitState();
 
   return (
     <div className="w-screen h-screen">
@@ -15,6 +15,7 @@ const Embed = () => {
         theme={theme}
         title={title}
         backdrop={backdrop}
+        copyBtn={copyBtn}
         mode={Mode.View}
       ></Frame>
     </div>

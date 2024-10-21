@@ -42,18 +42,6 @@ const CodeViewer = ({
     });
   }, [html]);
 
-  // useEffect(() => {
-  //   const resize = _throttle(() => {
-  //     // CodeLineEvent.emit(event_calc_frame_height);
-  //   }, 500);
-
-  //   addEventListener("resize", resize);
-
-  //   return () => {
-  //     removeEventListener("resize", resize);
-  //   };
-  // }, []);
-
   return (
     <div
       tabIndex={0}

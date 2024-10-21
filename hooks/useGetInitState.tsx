@@ -36,6 +36,7 @@ const useGetInitState = () => {
       title: searchParams.get("title") || "",
       width: Number(searchParams.get("width")) || frameMinWidth,
       backdrop: searchParams.get("backdrop") || "linear-gradient(to right, rgb(239, 68, 68), rgb(249, 115, 22))",
+      copyBtn: searchParams.get("copyBtn") === "true"
     };
   }, []);
 

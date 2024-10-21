@@ -21,6 +21,7 @@ export interface EditorProps extends CodeViewerProps {
 
 const Editor = (props: EditorProps) => {
   const ref = useRef<HTMLTextAreaElement>(null);
+
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLTextAreaElement>) => {
       props.onChange?.(e.target.value);
@@ -52,6 +53,7 @@ const Editor = (props: EditorProps) => {
       />
       {props.mode === Mode.Edit ? (
         <textarea
+          id="editorInput"
           tabIndex={-1}
           autoComplete="off"
           autoCorrect="off"

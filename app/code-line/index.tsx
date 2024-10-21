@@ -7,6 +7,7 @@ import { CodeLineEvent, event_calc_frame_height } from "./event";
 import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 import Resizeable from "./Resizeable";
 import { Mode } from "./Editor/inde";
+import Header from "./Header";
 
 const format_code = (code: string) => {
   const buf = Buffer.from(code, "utf-8");
@@ -102,39 +103,45 @@ const CodeLine = () => {
   }, [updateSearchParams]);
 
   return (
-    <div className="relative h-full">
-      <div className="ml-[324px] h-full overflow-y-auto">
-        <div className="m-8" ref={_frameContainerRef}>
-          <div className="flex justify-center">
-            <Resizeable width={width} onWidthChange={updateWidth}>
-              <div ref={_frameRef}>
-                <Frame
-                  padding={padding}
-                  code={code}
-                  onChange={updateCode}
-                  lang={lang}
-                  theme={theme}
-                  title={title}
-                  updateTitle={updateTitle}
-                  backdrop={backdrop}
-                  mode={Mode.Edit}
-                ></Frame>
+    <>
+      <Header></Header>
+      <div className="relative h-full">
+        <div className="relative ml-[324px] h-full">
+          <div className="h-full overflow-y-auto">
+            <div className="m-8" ref={_frameContainerRef}>
+              <div className="flex justify-center">
+                <Resizeable width={width} onWidthChange={updateWidth}>
+                  <div ref={_frameRef}>
+                    <Frame
+                      padding={padding}
+                      code={code}
+                      onChange={updateCode}
+                      lang={lang}
+                      theme={theme}
+                      title={title}
+                      updateTitle={updateTitle}
+                      backdrop={backdrop}
+                      mode={Mode.Edit}
+                      copyBtn={false}
+                    ></Frame>
+                  </div>
+                </Resizeable>
               </div>
-            </Resizeable>
+            </div>
           </div>
         </div>
+        <Setting
+          lang={lang}
+          updateLng={updateLng}
+          padding={padding}
+          updatePadding={updatePadding}
+          theme={theme}
+          updateTheme={updateTheme}
+          backdrop={backdrop}
+          updateBackdrop={updateBackdrop}
+        />
       </div>
-      <Setting
-        lang={lang}
-        updateLng={updateLng}
-        padding={padding}
-        updatePadding={updatePadding}
-        theme={theme}
-        updateTheme={updateTheme}
-        backdrop={backdrop}
-        updateBackdrop={updateBackdrop}
-      />
-    </div>
+    </>
   );
 };
 
