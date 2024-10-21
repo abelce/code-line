@@ -1,9 +1,7 @@
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
-const exampleCode = `
-// ESM
-import { createHighlighter } from 'shiki'
+const exampleCode = `import { createHighlighter } from 'shiki'
 
 async function main() {
   const highlighter = await createHighlighter({

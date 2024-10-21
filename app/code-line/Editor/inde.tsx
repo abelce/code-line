@@ -44,12 +44,12 @@ const Editor = (props: EditorProps) => {
   }, [props.theme]);
 
   return (
-    <div className={cn("w-full grid grid-rows-1 grid-cols-1")}>
+    <div className={cn("w-full relative")}>
       <CodeViewer
         code={props.code}
         lang={props.lang}
         theme={props.theme}
-        className="row-start-1 row-end-2 col-start-1 col-end-2"
+        className="flex-1"
       />
       {props.mode === Mode.Edit ? (
         <textarea
@@ -61,7 +61,7 @@ const Editor = (props: EditorProps) => {
           autoCapitalize="off"
           style={caretColor}
           className={cn(
-            "bg-transparent resize-none row-start-1 row-end-2 col-start-1 col-end-2 whitespace-pre-wrap",
+            "bg-transparent resize-none  whitespace-pre-wrap absolute inset-0",
             commonStyle,
             styles.editor
           )}

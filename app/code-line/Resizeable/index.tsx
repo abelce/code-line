@@ -30,7 +30,6 @@ const Resizeable = (props: Props) => {
 
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
-      console.log(pressed, point);
       if (pressed && point) {
         if (resizeType === 1) {
           props.onWidthChange?.(width + (point.x - e.pageX));
@@ -64,7 +63,8 @@ const Resizeable = (props: Props) => {
 
   return (
     <div className="relative">
-      <div className="h-[16px] relative mb-4">
+      {/* 标尺 */}
+      <div className="h-[16px] absolute mb-4 top-[-20px]" style={{display: pressed ? "block" : "none", width: `${width}px`}}>
         <div className="absolute bg-gray-500 w-full h-[1px] top-[7px] text-[12px] flex justify-center items-center">
           <div
             className="p-1 text-gray-500"
@@ -76,18 +76,20 @@ const Resizeable = (props: Props) => {
         <div className="absolute bg-gray-500 w-[1px] h-full"></div>
         <div className="absolute bg-gray-500 w-[1px] h-full right-0"></div>
       </div>
+      {/* 拖动条 */}
       <div
-        className="absolute z-10 flex justify-center items-center w-[16px] h-[16px] top-[50%] translate-x-[-50%] translate-y-[-50%] cursor-col-resize select-none"
+        className="absolute z-10 flex justify-center items-center w-[16px] h-full translate-x-[-50%] cursor-col-resize select-none"
         onMouseDown={handleLeftClick}
       >
         <div className="w-[6px] h-[6px] rounded-full bg-white"></div>
       </div>
       <div
-        className="absolute z-10 flex justify-center items-center w-[16px] h-[16px] right-0 top-[50%] translate-x-[50%] translate-y-[-50%] cursor-col-resize select-none"
+        className="absolute z-10 flex justify-center items-center w-[16px] h-full right-0 translate-x-[50%] cursor-col-resize select-none"
         onMouseDown={handleRightClick}
       >
         <div className="w-[6px] h-[6px] rounded-full bg-white"></div>
       </div>
+      {/* 内容 */}
       <div
         style={{ width: width + "px", userSelect: pressed ? "none" : "auto" }}
       >

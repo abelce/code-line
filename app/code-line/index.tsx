@@ -66,18 +66,20 @@ const CodeLine = () => {
     },
     [updateSearchParams]
   );
+
   const updateWidth = useCallback(
     (width: number) => {
       const containerWidth =
         _frameContainerRef.current?.getBoundingClientRect().width;
       if (containerWidth) {
-        const _width = Math.max(Math.min(containerWidth, width), frameMinWidth);
+        const _width = Math.max(Math.min(containerWidth - 64, width), frameMinWidth);
         setWidth(_width);
         updateSearchParams("width", _width);
       }
     },
     [updateSearchParams]
   );
+
   const updateBackdrop = useCallback(
     (backdrop: string) => {
       setBackdrop(backdrop);
@@ -103,12 +105,12 @@ const CodeLine = () => {
   }, [updateSearchParams]);
 
   return (
-    <>
+    <div className="h-full flex flex-col">
       <Header></Header>
-      <div className="relative h-full">
+      <div className="flex-1 relative overflow-hidden">
         <div className="relative ml-[324px] h-full">
           <div className="h-full overflow-y-auto">
-            <div className="m-8" ref={_frameContainerRef}>
+            <div className="p-8" ref={_frameContainerRef}>
               <div className="flex justify-center">
                 <Resizeable width={width} onWidthChange={updateWidth}>
                   <div ref={_frameRef}>
@@ -141,7 +143,7 @@ const CodeLine = () => {
           updateBackdrop={updateBackdrop}
         />
       </div>
-    </>
+    </div>
   );
 };
 

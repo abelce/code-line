@@ -33,11 +33,16 @@ function accountForFirefox(click: any, link: HTMLAnchorElement) {
 
 const getImageCanvas = async () => {
   const editorInput = document.getElementById("editorInput");
-  if (!editorInput) {
+  const editorTitle = document.getElementById("editorTitle") as HTMLInputElement;
+  if (!editorInput || !editorTitle) {
     return;
   }
   try {
     editorInput.style.display = "none"; // 先隐藏输入框，否则图片上会显示输入框的内容
+    debugger;
+    if (editorTitle.value === "") {
+      editorTitle.style.display = "none";
+    }
     return await new Promise((resolve) => {
       setTimeout(async () => {
         const frame = document.getElementById("frame");
@@ -52,6 +57,9 @@ const getImageCanvas = async () => {
     console.error(err);
   } finally {
     editorInput.style.display = "";
+    if (editorTitle.nodeValue === "") {
+      editorTitle.style.display = "";
+    }
   }
 };
 
