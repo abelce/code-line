@@ -13,6 +13,10 @@ body {
 }
 
 @layer base {
+  img {
+    /* 解决input输入框到处时错位问题 */
+    @apply inline-block; 
+  }
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;

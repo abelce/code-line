@@ -40,8 +40,6 @@ const Frame = (props: Props) => {
     };
   }, [theme]);
 
-
-
   return (
     <div id="frame" className="relative">
       <div
@@ -55,7 +53,7 @@ const Frame = (props: Props) => {
               <div className="h-3 w-3 rounded-full bg-gray-400"></div>
               <div className="h-3 w-3 rounded-full bg-gray-400"></div>
             </div>
-            <div>
+            <div className="text-center">
               <input
                 className="w-full bg-transparent text-center text-sm outline-0"
                 value={title}
@@ -68,13 +66,13 @@ const Frame = (props: Props) => {
               {copyBtn ? <CopyCode code={code}></CopyCode> : null}
             </div>
           </div>
-            <Editor
-              code={code}
-              lang={lang}
-              theme={theme}
-              onChange={props.onChange}
-              mode={props.mode}
-            ></Editor>
+          <Editor
+            code={code}
+            lang={lang}
+            theme={theme}
+            onChange={props.onChange}
+            mode={props.mode}
+          ></Editor>
         </div>
       </div>
     </div>
