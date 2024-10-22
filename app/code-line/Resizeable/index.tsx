@@ -4,6 +4,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { CodeLineEvent, event_calc_frame_height } from "../event";
 
 interface Props {
   children: ReactNode;
@@ -38,13 +39,14 @@ const Resizeable = (props: Props) => {
         }
       }
     },
-    [pressed, point, resizeType]
+    [pressed, point, resizeType, props, width]
   );
 
   const handleMouseUp = useCallback((e: MouseEvent) => {
     setPressed(false);
     setPoint(undefined);
     setResizeType(0);
+    CodeLineEvent.emit(event_calc_frame_height)
   }, []);
 
   useEffect(() => {
