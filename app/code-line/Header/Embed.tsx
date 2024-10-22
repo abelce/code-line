@@ -10,10 +10,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Switch } from "@/components/ui/switch";
-import CopyToClipboard from "react-copy-to-clipboard";
 import { CheckIcon, CodeIcon } from "@radix-ui/react-icons";
 
 const Embed = () => {
@@ -21,8 +20,20 @@ const Embed = () => {
   const [embedLink, setEmbedLink] = useState("");
   const [copyBtn, setCoptBtn] = useState(false);
   const [copied, setCopied] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const height = searchParams.get("height");
+
+  const handleCopyEmbedCode = useCallback(() => {
+    if (iframeRef.current) {
+      const type = "text/plain";
+      const blob = new Blob([iframeRef.current.outerHTML], {
+        type,
+      });
+      navigator.clipboard.write([new ClipboardItem({ [type]: blob })]);
+      setCopied(true);
+    }
+  }, []);
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
@@ -30,7 +41,7 @@ const Embed = () => {
     const embedLink = `${location.origin}/embed?${params.toString()}`;
 
     setEmbedLink(embedLink);
-  }, [copyBtn, height]);
+  }, [copyBtn, height, searchParams]);
 
   useEffect(() => {
     if (copied) {
@@ -66,16 +77,20 @@ const Embed = () => {
                 <Switch checked={copyBtn} onCheckedChange={setCoptBtn} />
               </div> */}
               <Separator className="my-4" />
-              <CopyToClipboard text={embedLink} onCopy={() => setCopied(true)}>
-                <Button variant={"outline"} className="mt-2 w-full">
-                  {copied ? <CheckIcon /> : <CodeIcon />}
-                  复制嵌入代码
-                </Button>
-              </CopyToClipboard>
+              {/* <CopyToClipboard text={embedLink} onCopy={() => setCopied(true)}> */}
+              <Button
+                variant={"outline"}
+                className="mt-2 w-full"
+                onClick={handleCopyEmbedCode}
+              >
+                {copied ? <CheckIcon /> : <CodeIcon />}
+                复制嵌入代码
+              </Button>
+              {/* </CopyToClipboard> */}
             </div>
             <div className="flex-1 overflow-x-auto">
               <iframe
-                id="code"
+                ref={iframeRef}
                 src={embedLink}
                 loading="lazy"
                 allowTransparency

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { CheckIcon, CopyIcon } from "@radix-ui/react-icons";
+import { CheckIcon } from "@radix-ui/react-icons";
 import { useCallback, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 
@@ -32,7 +32,7 @@ const CopyCode = (props: Props) => {
         ) : (
           <>
             <span>{"Copy"} </span>
-            <CopyIcon className="h-4 w-4" />
+            {/* <CopyIcon className="h-4 w-4" /> */}
           </>
         )}
       </Button>
