@@ -1097,3 +1097,5 @@ export const backgroundList = [
 export const SITE_NAME = "CodePic.cc - "
 // CodePic.cc 可以创建和分享你的代码片段，无需登录，操作简单。
 export const SITE_DESC = "CodePic.cc creates and shares your code snippets with no login required and easy to use."
+
+export const isDev = process.env.NODE_ENV === "development";

@@ -43,6 +43,9 @@ dependencies:
   eventemitter3:
     specifier: ^5.0.1
     version: 5.0.1
+  google:
+    specifier: link:@next/third-parties/google
+    version: link:@next/third-parties/google
   html-to-image:
     specifier: ^1.11.11
     version: 1.11.11
