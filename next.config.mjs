@@ -5,6 +5,15 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
     output: "standalone",
+    async redirects() {
+        return [
+          {
+            source: '/embed',
+            destination: '/en/embed',
+            permanent: true,
+          },
+        ]
+      },
 };
 
 export default withNextIntl(nextConfig);
