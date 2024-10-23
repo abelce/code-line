@@ -5,8 +5,8 @@ import {
 import styles from "./style.module.scss";
 import { cn } from "@/lib/utils";
 import Editor, { EditorProps, Mode } from "../Editor/inde";
-import { getTheme } from "@/app/config";
 import CopyCode from "./CopyCode";
+import { getTheme } from "../../config";
 
 interface Props extends EditorProps {
   padding: number;

@@ -9,7 +9,7 @@ import {
 import CodeViewer, { CodeViewerProps, commonStyle } from "../CodeViewer";
 import { cn } from "@/lib/utils";
 import styles from "./style.module.scss";
-import { getTheme } from "@/app/config";
+import { getTheme } from "../../config";
 
 export enum Mode {
   Edit = "edit",

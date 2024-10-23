@@ -9,6 +9,7 @@ import Resizeable from "./Resizeable";
 import { Mode } from "./Editor/inde";
 import Header from "./Header";
 
+
 const format_code = (code: string) => {
   const buf = Buffer.from(code, "utf-8");
   return buf.toString("base64");

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Embed from "./Embed";
 import Exports from "./Exports";
 import Link from "next/link";
+import LocalSwitcher from "./LocalSwitcher";
 
 const Header = () => {
   return (
@@ -15,6 +16,7 @@ const Header = () => {
       <div className="flex gap-4">
         <Embed />
         <Exports />
+        <LocalSwitcher />
       </div>
     </header>
   );
