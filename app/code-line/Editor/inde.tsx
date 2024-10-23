@@ -1,6 +1,7 @@
 import {
   ChangeEvent,
   CSSProperties,
+  KeyboardEvent,
   useCallback,
   useMemo,
   useRef,
@@ -43,8 +44,33 @@ const Editor = (props: EditorProps) => {
     return {};
   }, [props.theme]);
 
+  const handleInputKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLTextAreaElement>) => {
+      if (ref.current && e.code === "Tab") {
+        e.preventDefault();
+        var start = ref.current.selectionStart;
+        var end = ref.current.selectionEnd;
+
+        // set textarea value to: text before caret + tab + text after caret
+        ref.current.value =
+          ref.current.value.substring(0, start) +
+          "\t" +
+          ref.current.value.substring(end);
+
+        // put caret at right position again
+        ref.current.selectionStart = ref.current.selectionEnd = start + 1;
+        props.onChange?.(ref.current.value);
+        return false;
+      }
+    },
+    [props]
+  );
+
   return (
-    <div className={cn("w-full relative")}>
+    <div
+      className={cn("h-full w-full relative overflow-x-auto")}
+      id="code-editor"
+    >
       <CodeViewer
         code={props.code}
         lang={props.lang}
@@ -69,6 +95,8 @@ const Editor = (props: EditorProps) => {
           value={props.code}
           onChange={handleChange}
           onFocus={onFocus}
+          //@ts-ignore
+          onKeyDown={handleInputKeyDown}
         />
       ) : null}
     </div>

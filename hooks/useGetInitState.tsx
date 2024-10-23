@@ -1,20 +1,9 @@
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
-const exampleCode = `import { createHighlighter } from 'shiki'
-
-async function main() {
-  const highlighter = await createHighlighter({
-    themes: ['vitesse-dark'],
-    langs: ['javascript'],
-  })
-
-  const code = highlighter.codeToHtml('const a = 1', {
-    theme: 'vitesse-dark',
-    lang: 'javascript',
-  })
-}
-`;
+const exampleCode = `function Demo() {
+    console.log("Hello world);
+}`;
 
 export const frameMinWidth = 480;
 
@@ -36,7 +25,7 @@ const useGetInitState = () => {
       backdrop: searchParams.get("backdrop") || "linear-gradient(to right, rgb(239, 68, 68), rgb(249, 115, 22))",
       copyBtn: searchParams.get("copyBtn") === "true"
     };
-  }, []);
+  }, [searchParams]);
 
   return ddefaultStates;
 };

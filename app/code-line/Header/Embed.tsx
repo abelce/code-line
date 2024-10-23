@@ -35,6 +35,35 @@ const Embed = () => {
     }
   }, []);
 
+  // const iframeOnLoad = useCallback(() => {
+  //   console.log(iframeRef.current);
+  //   debugger;
+  //   if (iframeRef.current) {
+  //     const resizeRo = new ResizeObserver((entries) => {
+  //       let entry = entries[0];
+  //       let height = entry.contentRect.height;
+  //       if (iframeRef.current) {
+  //         const codeEditorHeight =
+  //         iframeRef.current.contentWindow?.document.body.querySelector(
+  //           "#code-editor"
+  //         )?.getBoundingClientRect().height || 0;
+          
+  //         debugger;
+  //         const iframeHeight =  (iframeRef.current.contentWindow?.document.body.getBoundingClientRect().height || 0) - codeEditorHeight + height;
+  //         iframeRef.current.style.height = height + "px";
+  //       }
+  //     });
+  //     if (iframeRef.current.contentWindow) {
+    
+  //       const codeViewer =
+  //         iframeRef.current.contentWindow?.document.body.querySelector(
+  //           "#code-viewer"
+  //         );
+  //         codeViewer && resizeRo.observe(codeViewer);
+  //     }
+  //   }
+  // }, []);
+
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
     params.set("copyBtn", copyBtn + "");
@@ -77,7 +106,6 @@ const Embed = () => {
                 <Switch checked={copyBtn} onCheckedChange={setCoptBtn} />
               </div> */}
               <Separator className="my-4" />
-              {/* <CopyToClipboard text={embedLink} onCopy={() => setCopied(true)}> */}
               <Button
                 variant={"outline"}
                 className="mt-2 w-full"
@@ -86,11 +114,11 @@ const Embed = () => {
                 {copied ? <CheckIcon /> : <CodeIcon />}
                 复制嵌入代码
               </Button>
-              {/* </CopyToClipboard> */}
             </div>
             <div className="flex-1 overflow-x-auto">
               <iframe
                 ref={iframeRef}
+                className="codepic_cc"
                 src={embedLink}
                 loading="lazy"
                 allowTransparency
@@ -98,6 +126,7 @@ const Embed = () => {
                 height={Number(height)}
                 width="100%"
                 style={{ widows: "100%", border: "none" }}
+                // onLoad={iframeOnLoad}
               ></iframe>
             </div>
           </div>

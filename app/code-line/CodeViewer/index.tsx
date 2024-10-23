@@ -31,6 +31,7 @@ const CodeViewer = ({
         theme,
       });
       setHtml(html);
+      
     };
 
     load();
@@ -44,6 +45,7 @@ const CodeViewer = ({
 
   return (
     <div
+      id="code-viewer"
       tabIndex={0}
       dangerouslySetInnerHTML={{ __html: html }}
       className={cn(commonStyle, className)}

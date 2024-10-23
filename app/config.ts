@@ -1092,3 +1092,8 @@ export const backgroundList = [
     value: "linear-gradient(to right, rgb(15, 23, 42), rgb(51, 65, 85))",
   },
 ];
+
+
+export const SITE_NAME = "CodePic.cc - "
+// CodePic.cc 可以创建和分享你的代码片段，无需登录，操作简单。
+export const SITE_DESC = "CodePic.cc creates and shares your code snippets with no login required and easy to use."
