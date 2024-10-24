@@ -37,9 +37,9 @@ const Resizeable = (props: Props) => {
     (e: MouseEvent) => {
       if (pressed && point) {
         if (resizeType === 1) {
-          props.onWidthChange?.(oldWidth + (point.x - e.pageX) * 1.5);
+          props.onWidthChange?.(oldWidth + (point.x - e.pageX) * 2);
         } else if (resizeType === 2) {
-          props.onWidthChange?.(oldWidth + (e.pageX - point.x));
+          props.onWidthChange?.(oldWidth + (e.pageX - point.x) * 2);
         }
       }
     },

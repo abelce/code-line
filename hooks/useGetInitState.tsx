@@ -1,7 +1,7 @@
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
-const exampleCode = `function Demo() {
+const exampleCode = `function main() {
     console.log("Hello world);
 }`;
 
