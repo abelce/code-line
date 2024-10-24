@@ -8,6 +8,7 @@ import {
 import { useCallback } from "react";
 import html2canvas from "html2canvas";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslations } from "next-intl";
 
 function simulateDownloadImageClick(uri: string, filename: string) {
   const link = document.createElement("a");
@@ -64,6 +65,7 @@ const getImageCanvas = async () => {
 };
 
 const Exports = () => {
+  const t = useTranslations("code-line.header")
   const { toast } = useToast();
   const handleExportPNG = useCallback(async () => {
     const canvas = await getImageCanvas();
@@ -84,22 +86,22 @@ const Exports = () => {
         }, "image/png");
 
         toast({
-          title: "已复制",
+          title: t("export.copy-success"),
         });
       } catch (error) {
         console.error(error);
       }
     }
-  }, []);
+  }, [t, toast]);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">导出</Button>
+        <Button variant="outline">{t("export.text")}</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem onClick={handleExportPNG}>导出PNG</DropdownMenuItem>
-        <DropdownMenuItem onClick={handleCopyImage}>复制图片</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleExportPNG}>{t("export.png")}</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleCopyImage}>{t("export.copy")}</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { isDev, SITE_DESC, SITE_NAME } from "./config";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound, redirect, usePathname } from "next/navigation";
 import { routing } from "@/i18n/routing";
 
@@ -69,6 +69,8 @@ export default async function RootLayout(
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
+
+  setRequestLocale(locale);
 
   // Providing all messages to the client
   // side is the easiest way to get started

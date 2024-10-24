@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/select";
 import { backgroundList, lngList, paddingList, themeList } from "../../config";
 import { SearchSelect } from "@/components/SearchSelect";
+import { useTranslations } from "next-intl";
 
 interface SettingProps {
   lang: string;
@@ -30,11 +31,12 @@ const Item = ({ label, children }: { label: string; children: ReactNode }) => {
 };
 
 const Setting = (props: SettingProps) => {
+  const t = useTranslations("code-line.main.setting")
   return (
     <div className="absolute top-8 left-0 border w-[300px] p-4 rounded">
-      <Item label="背景">
+      <Item label={t("backdrop")}>
         <SearchSelect
-          text="主题"
+          text={t("backdrop")}
           btnClassName="w-[160px]"
           value={props.backdrop}
           onChange={props.updateBackdrop}
@@ -50,22 +52,22 @@ const Setting = (props: SettingProps) => {
           )}
         ></SearchSelect>
       </Item>
-      <Item label="主题">
+      <Item label={t("theme")}>
         <SearchSelect
-          text="主题"
+          text={t("theme")}
           btnClassName="w-[160px]"
           value={String(props.theme)}
           onChange={props.updateTheme}
           options={themeList}
         ></SearchSelect>
       </Item>
-      <Item label="内边距">
+      <Item label={t("padding")}>
         <Select
           value={String(props.padding)}
           onValueChange={(pad: string | number) => props.updatePadding(+pad)}
         >
           <SelectTrigger className="w-[160px]">
-            <SelectValue placeholder="内边距" />
+            <SelectValue placeholder={t("padding")} />
           </SelectTrigger>
           <SelectContent>
             {paddingList.map((pad) => (
@@ -76,9 +78,9 @@ const Setting = (props: SettingProps) => {
           </SelectContent>
         </Select>
       </Item>
-      <Item label="语言">
+      <Item label={t("language")}>
         <SearchSelect
-          text="语言"
+          text={t("language")}
           btnClassName="w-[160px]"
           value={String(props.lang)}
           onChange={props.updateLng}

@@ -18,7 +18,7 @@ import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/routing';
 
 const Embed = () => {
-  const t = useTranslations();
+  const t = useTranslations("code-line.header");
   const searchParams = useSearchParams();
   const [embedLink, setEmbedLink] = useState("");
   const [copyBtn, setCoptBtn] = useState(false);
@@ -86,22 +86,22 @@ const Embed = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">{t("header.embed")}</Button>
+        <Button variant="outline">{t("embed.text")}</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[1000px] max-h-[90%] min-h-[50%] overflow-hidden flex flex-col">
         <DialogHeader>
-          <DialogTitle>嵌入</DialogTitle>
+          <DialogTitle>{t("embed.text")}</DialogTitle>
         </DialogHeader>
         <div className="flex-1 flex overflow-hidden">
           <div className="flex-1 flex gap-4 overflow-hidden">
             <div className="w-64 pr-2">
               <DialogDescription>
-                <p>通过iframe直接嵌入您的网站、博客或文档，可自定义内容。</p>
-                <p className="mt-1">注意：嵌入时设置的宽度不会生效。</p>
+                <p>{t('embed.desc')}</p>
+                <p className="mt-2">{t("embed.notice")}</p>
               </DialogDescription>
               <Separator className="my-4" />
               <div className="flex justify-between items-center gap-4">
-                <label className="text-sm">显示复制按钮</label>
+                <label className="text-sm">{t("embed.show-copy-btn")}</label>
                 <Switch checked={copyBtn} onCheckedChange={setCoptBtn} />
               </div>
               {/* <div className="flex justify-between items-center gap-4">
@@ -115,7 +115,7 @@ const Embed = () => {
                 onClick={handleCopyEmbedCode}
               >
                 {copied ? <CheckIcon /> : <CodeIcon />}
-                复制嵌入代码
+                {t("embed.copy-embed-code")}
               </Button>
             </div>
             <div className="flex-1 overflow-x-auto">

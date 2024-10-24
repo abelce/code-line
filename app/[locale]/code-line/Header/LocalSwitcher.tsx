@@ -10,7 +10,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useParams, useSearchParams } from "next/navigation";
 
 const LocalSwitcher = () => {
-  const t = useTranslations();
+  const t = useTranslations("code-line.header");
   const params = useParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -32,8 +32,8 @@ const LocalSwitcher = () => {
         <SelectValue />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="en">{t("header.lng.en")}</SelectItem>
-        <SelectItem value="zh">{t("header.lng.zh")}</SelectItem>
+        <SelectItem value="en">{t("lng.en")}</SelectItem>
+        <SelectItem value="zh">{t("lng.zh")}</SelectItem>
       </SelectContent>
     </Select>
   );

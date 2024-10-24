@@ -1,9 +1,32 @@
 {
-    "header": {
-        "embed": "嵌入代码",
-        "lng": {
-            "en": "English",
-            "zh": "中文"
+    "code-line": {
+        "header": {
+            "embed": {
+                "text": "嵌入代码",
+                "desc": "通过iframe直接嵌入您的网站、博客或文档，可自定义内容。",
+                "notice": "注意：嵌入时设置的宽度不会生效。",
+                "show-copy-btn": "显示复制按钮",
+                "copy-embed-code": "复制嵌入代码"
+            },
+            "lng": {
+                "en": "English",
+                "zh": "中文"
+            },
+            "export": {
+                "text": "导出",
+                "png": "导出PNG",
+                "copy": "复制图片",
+                "copy-success": "复制成功"
+            }
+        },
+        "main": {
+            "setting": {
+                "backdrop": "背景",
+                "theme": "主题",
+                "padding": "内边距",
+                "language": "语言"
+
+            }
         }
     }
 }

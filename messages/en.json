@@ -1,9 +1,32 @@
 {
-    "header": {
-        "embed": "Embed",
-        "lng": {
-            "en": "English",
-            "zh": "中文"
+    "code-line": {
+        "header": {
+            "embed": {
+                "text": "Embed",
+                "desc": "Customizable content via iframes embedded directly into your website, blog or document.",
+                "notice": "Note: The width set at embedding will not take effect.",
+                "show-copy-btn": "Show copy button",
+                "copy-embed-code": "Copy Embed Code"
+            },
+            "lng": {
+                "en": "English",
+                "zh": "中文"
+            },
+            "export": {
+                "text": "Export",
+                "png": "Export PNG",
+                "copy": "Copy IMAGE",
+                "copy-success": "Copied"
+            }
+        },
+        "main": {
+            "setting": {
+                "backdrop": "Backdrop",
+                "theme": "Theme",
+                "padding": "Padding",
+                "language": "Language"
+
+            }
         }
     }
 }
