@@ -1,6 +1,7 @@
 {
     "code-line": {
         "header": {
+            "copy-link": "复制链接",
             "embed": {
                 "text": "嵌入代码",
                 "desc": "通过iframe直接嵌入您的网站、博客或文档，可自定义内容。",

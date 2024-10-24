@@ -3,6 +3,7 @@ import Embed from "./Embed";
 import Exports from "./Exports";
 import Link from "next/link";
 import LocalSwitcher from "./LocalSwitcher";
+import CopyLink from "./CodeLink";
 
 const Header = () => {
   return (
@@ -14,6 +15,7 @@ const Header = () => {
         </div>
       </div>
       <div className="flex gap-4">
+        <CopyLink />
         <Embed />
         <Exports />
         <LocalSwitcher />

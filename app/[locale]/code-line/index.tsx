@@ -9,7 +9,6 @@ import Resizeable from "./Resizeable";
 import { Mode } from "./Editor/inde";
 import Header from "./Header";
 
-
 const format_code = (code: string) => {
   const buf = Buffer.from(code, "utf-8");
   return buf.toString("base64");
@@ -73,7 +72,10 @@ const CodeLine = () => {
       const containerWidth =
         _frameContainerRef.current?.getBoundingClientRect().width;
       if (containerWidth) {
-        const _width = Math.max(Math.min(containerWidth - 64, width), frameMinWidth);
+        const _width = Math.max(
+          Math.min(containerWidth - 64, width),
+          frameMinWidth
+        );
         setWidth(_width);
         updateSearchParams("width", _width);
       }
@@ -104,6 +106,22 @@ const CodeLine = () => {
       CodeLineEvent.off(event_calc_frame_height, calc);
     };
   }, [updateSearchParams]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const containerWidth =
+        _frameContainerRef.current?.getBoundingClientRect().width || 0;
+      if (width > containerWidth) {
+        const _newWidth = Math.max(frameMinWidth, containerWidth);
+        setWidth(_newWidth);
+        updateSearchParams("width", _newWidth);
+      }
+    };
+    addEventListener("resize", handleResize);
+    return () => {
+      removeEventListener("resize", handleResize);
+    };
+  }, [updateSearchParams, width]);
 
   return (
     <div className="h-full flex flex-col">
