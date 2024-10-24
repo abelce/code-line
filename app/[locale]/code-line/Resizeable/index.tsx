@@ -14,35 +14,40 @@ interface Props {
 
 const Resizeable = (props: Props) => {
   const width = props.width;
+  const [oldWidth, setOldWidth] = useState(0);
   const [point, setPoint] = useState<{ x: number; y: number }>();
   const [pressed, setPressed] = useState(false);
   const [resizeType, setResizeType] = useState<number>(0);
 
   const handleLeftClick = useCallback((e: any) => {
+    setOldWidth(width)
     setPressed(true);
     setPoint({ x: e.pageX, y: e.pageY });
     setResizeType(1);
-  }, []);
+  }, [width]);
+
   const handleRightClick = useCallback((e: any) => {
+    setOldWidth(width)
     setPressed(true);
     setPoint({ x: e.pageX, y: e.pageY });
     setResizeType(2);
-  }, []);
+  }, [width]);
 
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
       if (pressed && point) {
         if (resizeType === 1) {
-          props.onWidthChange?.(width + (point.x - e.pageX));
+          props.onWidthChange?.(oldWidth + (point.x - e.pageX) * 1.5);
         } else if (resizeType === 2) {
-          props.onWidthChange?.(width + (e.pageX - point.x));
+          props.onWidthChange?.(oldWidth + (e.pageX - point.x));
         }
       }
     },
-    [pressed, point, resizeType, props, width]
+    [pressed, point, oldWidth, resizeType, props]
   );
 
   const handleMouseUp = useCallback((e: MouseEvent) => {
+    setOldWidth(0)
     setPressed(false);
     setPoint(undefined);
     setResizeType(0);
