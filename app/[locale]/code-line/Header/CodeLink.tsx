@@ -3,11 +3,19 @@ import { Button } from "@/components/ui/button";
 import { CheckIcon, LinkIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-import CopyToClipboard from "react-copy-to-clipboard";
 
 const CopyLink = () => {
   const t = useTranslations("code-line.header");
   const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    const type = "text/plain";
+    const blob = new Blob([location.href], {
+      type,
+    });
+    navigator.clipboard.write([new ClipboardItem({ [type]: blob })]);
+    setCopied(true);
+  };
 
   useEffect(() => {
     if (copied) {
@@ -18,12 +26,10 @@ const CopyLink = () => {
   }, [copied]);
 
   return (
-    <CopyToClipboard text={location.href} onCopy={() => setCopied(true)}>
-      <Button variant="outline">
-        {copied ? <CheckIcon /> : <LinkIcon />}
-        {t("copy-link")}
-      </Button>
-    </CopyToClipboard>
+    <Button variant="outline" onClick={handleCopy}>
+      {copied ? <CheckIcon /> : <LinkIcon />}
+      {t("copy-link")}
+    </Button>
   );
 };
 

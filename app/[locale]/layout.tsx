@@ -32,14 +32,14 @@ export const metadata: Metadata = {
   },
   authors: [
     {
-      name: "文钦,wxabelce@gmail.com",
+      name: "Abelce,wxabelce@gmail.com",
     },
   ],
   alternates: {
     canonical: canonical,
   },
-  creator: "文钦",
-  publisher: "文钦",
+  creator: "Abelce",
+  publisher: "Abelce",
   applicationName: SITE_NAME,
   openGraph: {
     type: "website",
