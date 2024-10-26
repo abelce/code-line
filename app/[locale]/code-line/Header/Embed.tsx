@@ -38,35 +38,6 @@ const Embed = () => {
     }
   }, []);
 
-  // const iframeOnLoad = useCallback(() => {
-  //   console.log(iframeRef.current);
-  //   debugger;
-  //   if (iframeRef.current) {
-  //     const resizeRo = new ResizeObserver((entries) => {
-  //       let entry = entries[0];
-  //       let height = entry.contentRect.height;
-  //       if (iframeRef.current) {
-  //         const codeEditorHeight =
-  //         iframeRef.current.contentWindow?.document.body.querySelector(
-  //           "#code-editor"
-  //         )?.getBoundingClientRect().height || 0;
-          
-  //         debugger;
-  //         const iframeHeight =  (iframeRef.current.contentWindow?.document.body.getBoundingClientRect().height || 0) - codeEditorHeight + height;
-  //         iframeRef.current.style.height = height + "px";
-  //       }
-  //     });
-  //     if (iframeRef.current.contentWindow) {
-    
-  //       const codeViewer =
-  //         iframeRef.current.contentWindow?.document.body.querySelector(
-  //           "#code-viewer"
-  //         );
-  //         codeViewer && resizeRo.observe(codeViewer);
-  //     }
-  //   }
-  // }, []);
-
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
     params.set("copyBtn", copyBtn + "");
@@ -104,10 +75,6 @@ const Embed = () => {
                 <label className="text-sm">{t("embed.show-copy-btn")}</label>
                 <Switch checked={copyBtn} onCheckedChange={setCoptBtn} />
               </div>
-              {/* <div className="flex justify-between items-center gap-4">
-                <label className="text-sm">固定宽度</label>
-                <Switch checked={copyBtn} onCheckedChange={setCoptBtn} />
-              </div> */}
               <Separator className="my-4" />
               <Button
                 variant={"outline"}
@@ -129,7 +96,6 @@ const Embed = () => {
                 height={Number(height)}
                 width="100%"
                 style={{ widows: "100%", border: "none" }}
-                // onLoad={iframeOnLoad}
               ></iframe>
             </div>
           </div>

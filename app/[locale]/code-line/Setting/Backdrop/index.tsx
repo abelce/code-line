@@ -25,7 +25,7 @@ const Backdrop = (props: Props) => {
   const getButton = () => {
     if (props.type === BgType.Image) {
       return props.value ? (
-        <img src={props.value} className="h-full w-full bg-cover"></img>
+        <img src={props.value} className="h-full w-full object-contain"></img>
       ) : (
         <div className={cn(styles["bg-transparent"], "h-full")}></div>
       );
@@ -40,7 +40,7 @@ const Backdrop = (props: Props) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="rounded h-[40px] w-[160px] overflow-hidden cursor bg-transparent">
+        <div className="rounded h-[40px] w-[160px] overflow-hidden cursor bg-transparent border">
           {getButton()}
         </div>
       </PopoverTrigger>

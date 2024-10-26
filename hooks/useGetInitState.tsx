@@ -23,7 +23,7 @@ const useGetInitState = () => {
       title: searchParams.get("title") || "",
       width: Math.max(Number(searchParams.get("width")) || 0, frameMinWidth),
       backdropType: searchParams.get("backdropType"),
-      backdrop: searchParams.get("backdrop"),
+      backdrop: searchParams.get("backdrop") || "",
       copyBtn: searchParams.get("copyBtn") === "true",
     };
 

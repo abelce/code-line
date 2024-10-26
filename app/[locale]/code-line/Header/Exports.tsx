@@ -47,7 +47,7 @@ const getImageCanvas = async () => {
       setTimeout(async () => {
         const frame = document.getElementById("frame");
         if (frame) {
-          const canvas = await html2canvas(frame, { allowTaint: true });
+          const canvas = await html2canvas(frame, { allowTaint: false, useCORS: true  });
 
           resolve(canvas);
         }

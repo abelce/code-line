@@ -1,4 +1,4 @@
-import { CSSProperties, useMemo } from "react";
+import { CSSProperties, useMemo, useState } from "react";
 import styles from "./style.module.scss";
 import { cn } from "@/lib/utils";
 import Editor, { EditorProps, Mode } from "../Editor/inde";
@@ -16,6 +16,8 @@ interface Props extends EditorProps {
   mode: Mode;
 }
 
+let currentBaackdrop = "";
+
 const Frame = (props: Props) => {
   const {
     padding,
@@ -30,6 +32,7 @@ const Frame = (props: Props) => {
     mode = Mode.View,
   } = props;
 
+
   const containerStyles = useMemo((): CSSProperties => {
     const obj: CSSProperties = {
       padding: `${padding}px`,
@@ -41,7 +44,8 @@ const Frame = (props: Props) => {
       obj.background = backdrop;
     }
     return obj;
-  }, [backdropType, backdrop, padding]);
+  }, [padding, backdropType, backdrop]);
+
 
   const contentStyles = useMemo((): CSSProperties => {
     return {
