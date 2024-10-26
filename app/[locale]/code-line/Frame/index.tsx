@@ -1,17 +1,16 @@
-import {
-  CSSProperties,
-  useMemo,
-} from "react";
+import { CSSProperties, useMemo } from "react";
 import styles from "./style.module.scss";
 import { cn } from "@/lib/utils";
 import Editor, { EditorProps, Mode } from "../Editor/inde";
 import CopyCode from "./CopyCode";
 import { getTheme } from "../../config";
+import { BgType } from "../Setting/Backdrop";
 
 interface Props extends EditorProps {
   padding: number;
   title: string;
   updateTitle?: (title: string) => void;
+  backdropType: BgType;
   backdrop: string;
   copyBtn: boolean;
   mode: Mode;
@@ -25,17 +24,24 @@ const Frame = (props: Props) => {
     theme,
     title,
     updateTitle,
+    backdropType,
     backdrop,
     copyBtn,
     mode = Mode.View,
   } = props;
 
   const containerStyles = useMemo((): CSSProperties => {
-    return {
+    const obj: CSSProperties = {
       padding: `${padding}px`,
-      background: backdrop,
     };
-  }, [padding, backdrop]);
+    if (backdropType === BgType.Image && backdrop) {
+      obj.backgroundImage = `url(${backdrop})`;
+      obj.backgroundSize = "cover";
+    } else {
+      obj.background = backdrop;
+    }
+    return obj;
+  }, [backdropType, backdrop, padding]);
 
   const contentStyles = useMemo((): CSSProperties => {
     return {
@@ -57,10 +63,16 @@ const Frame = (props: Props) => {
   return (
     <div id="frame" className="relative h-full flex">
       <div
-        className={cn("flex-1 flex rounded transition-all duration-200")}
+        className={cn(
+          "flex-1 flex rounded transition-all duration-200",
+          styles["bg-transparent"]
+        )}
         style={containerStyles}
       >
-        <div className="flex-1 flex flex-col rounded pt-1 relative group" style={contentStyles}>
+        <div
+          className="flex-1 flex flex-col rounded pt-1 relative group"
+          style={contentStyles}
+        >
           <div className={cn("px-4", styles.header)}>
             <div className="flex gap-1 items-center">
               <div className="h-3 w-3 rounded-full bg-gray-400"></div>
@@ -75,7 +87,6 @@ const Frame = (props: Props) => {
                 value={title}
                 placeholder="Untitiled"
                 onChange={(e) => updateTitle?.(e.target.value || "")}
-          
                 disabled={mode === Mode.View}
               />
             </div>

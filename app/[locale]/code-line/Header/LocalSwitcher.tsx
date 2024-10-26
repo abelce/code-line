@@ -19,7 +19,6 @@ const LocalSwitcher = () => {
 
   const handleOnChange = (newLocale: string) => {
     const prefix = `/${currentLocale}`;
-    debugger;
     const _newPathname = pathname.startsWith(prefix) ? pathname.slice(prefix.length) : pathname
     router.push({
         pathname: `/${_newPathname}?${searchParams.toString()}`,

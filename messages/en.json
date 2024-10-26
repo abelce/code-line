@@ -23,10 +23,15 @@
         "main": {
             "setting": {
                 "backdrop": "Backdrop",
+                "backdrop-content": {
+                    "color": "Color",
+                    "color-input": "Enter a valid color",
+                    "image": "Image",
+                    "image-input": "Enter a valid url"
+                },
                 "theme": "Theme",
                 "padding": "Padding",
                 "language": "Language"
-
             }
         }
     }

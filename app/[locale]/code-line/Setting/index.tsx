@@ -1,4 +1,4 @@
-import { ReactNode, useCallback } from "react";
+import { ReactNode } from "react";
 import {
   Select,
   SelectContent,
@@ -6,9 +6,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { backgroundList, lngList, paddingList, themeList } from "../../config";
+import { lngList, paddingList, themeList } from "../../config";
 import { SearchSelect } from "@/components/SearchSelect";
 import { useTranslations } from "next-intl";
+import Backdrop, { BgType } from "./Backdrop";
 
 interface SettingProps {
   lang: string;
@@ -18,7 +19,8 @@ interface SettingProps {
   theme: string;
   updateTheme: (theme: string) => void;
   backdrop: string;
-  updateBackdrop: (backdrop: string) => void;
+  backdropType: BgType;
+  updateBackdrop: (type: BgType, backdrop: string) => void;
 }
 
 const Item = ({ label, children }: { label: string; children: ReactNode }) => {
@@ -35,22 +37,7 @@ const Setting = (props: SettingProps) => {
   return (
     <div className="absolute top-8 left-0 border w-[300px] p-4 rounded">
       <Item label={t("backdrop")}>
-        <SearchSelect
-          text={t("backdrop")}
-          btnClassName="w-[160px]"
-          value={props.backdrop}
-          onChange={props.updateBackdrop}
-          options={backgroundList}
-          optionRender={(option) => (
-            <>
-              <div
-                style={{ background: option.value }}
-                className="rounded-full w-[16px] h-[16px] mr-[4px]"
-              ></div>
-              {option.label}
-            </>
-          )}
-        ></SearchSelect>
+        <Backdrop type={props.backdropType} value={props.backdrop} onChange={props.updateBackdrop}></Backdrop>
       </Item>
       <Item label={t("theme")}>
         <SearchSelect

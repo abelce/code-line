@@ -8,6 +8,7 @@ import useUpdateSearchParams from "@/hooks/useUpdateSearchParams";
 import Resizeable from "./Resizeable";
 import { Mode } from "./Editor/inde";
 import Header from "./Header";
+import { BgType } from "./Setting/Backdrop";
 
 const format_code = (code: string) => {
   const buf = Buffer.from(code, "utf-8");
@@ -23,6 +24,7 @@ const CodeLine = () => {
   const [title, setTitle] = useState(defaultStates.title);
   const [width, setWidth] = useState(defaultStates.width);
   const [backdrop, setBackdrop] = useState(defaultStates.backdrop);
+  const [backdropType, setBackdropType] = useState(defaultStates.backdropType);
   const _frameContainerRef = useRef<HTMLDivElement>(null);
   const _frameRef = useRef<HTMLDivElement>(null);
 
@@ -84,8 +86,10 @@ const CodeLine = () => {
   );
 
   const updateBackdrop = useCallback(
-    (backdrop: string) => {
+    (type: BgType, backdrop: string) => {
       setBackdrop(backdrop);
+      setBackdropType(type);
+      updateSearchParams("backdropType", type);
       updateSearchParams("backdrop", backdrop);
     },
     [updateSearchParams]
@@ -127,7 +131,7 @@ const CodeLine = () => {
     <div className="h-full flex flex-col">
       <Header></Header>
       <div className="flex-1 relative overflow-hidden">
-        <div className="relative ml-[324px] h-full">
+        <div className="relative ml-[324px] h-full border border-t-0 border-r-0 border-b-0">
           <div className="h-full overflow-y-auto">
             <div className="p-8" ref={_frameContainerRef}>
               <div className="flex justify-center">
@@ -141,6 +145,7 @@ const CodeLine = () => {
                       theme={theme}
                       title={title}
                       updateTitle={updateTitle}
+                      backdropType={backdropType as BgType}
                       backdrop={backdrop}
                       mode={Mode.Edit}
                       copyBtn={false}
@@ -158,6 +163,7 @@ const CodeLine = () => {
           updatePadding={updatePadding}
           theme={theme}
           updateTheme={updateTheme}
+          backdropType={backdropType as BgType}
           backdrop={backdrop}
           updateBackdrop={updateBackdrop}
         />

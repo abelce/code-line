@@ -1,4 +1,4 @@
-export const paddingList = [4, 8, 16, 24, 32, 48, 64];
+export const paddingList = [4, 8, 16, 24, 32, 48, 64, 72, 80, 88, 96];
 
 export const lngList = [
   {

@@ -40,7 +40,6 @@ const getImageCanvas = async () => {
   }
   try {
     editorInput.style.display = "none"; // 先隐藏输入框，否则图片上会显示输入框的内容
-    debugger;
     if (editorTitle.value === "") {
       editorTitle.style.display = "none";
     }

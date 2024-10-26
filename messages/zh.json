@@ -23,10 +23,15 @@
         "main": {
             "setting": {
                 "backdrop": "背景",
+                "backdrop-content": {
+                    "color": "颜色",
+                    "color-input": "输入有效的颜色",
+                    "image": "图片",
+                    "image-input": "输入有效的地址"
+                },
                 "theme": "主题",
                 "padding": "内边距",
                 "language": "语言"
-
             }
         }
     }

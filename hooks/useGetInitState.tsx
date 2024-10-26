@@ -10,7 +10,7 @@ export const frameMinWidth = 480;
 const useGetInitState = () => {
   const searchParams = useSearchParams();
   const ddefaultStates = useMemo(() => {
-    return {
+    const obj = {
       code:
         Buffer.from(searchParams.get("code") || "", "base64").toString(
           "utf-8"
@@ -22,11 +22,18 @@ const useGetInitState = () => {
         24,
       title: searchParams.get("title") || "",
       width: Math.max(Number(searchParams.get("width")) || 0, frameMinWidth),
-      backdrop:
-        searchParams.get("backdrop") ||
-        "linear-gradient(to right, rgb(239, 68, 68), rgb(249, 115, 22))",
+      backdropType: searchParams.get("backdropType"),
+      backdrop: searchParams.get("backdrop"),
       copyBtn: searchParams.get("copyBtn") === "true",
     };
+
+    if (!obj.backdropType) {
+      obj.backdropType = "color";
+      obj.backdrop =
+        "linear-gradient(to right, rgb(239, 68, 68), rgb(249, 115, 22))";
+    }
+
+    return obj;
   }, [searchParams]);
 
   return ddefaultStates;
