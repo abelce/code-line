@@ -25,7 +25,7 @@ const Backdrop = (props: Props) => {
   const getButton = () => {
     if (props.type === BgType.Image) {
       return props.value ? (
-        <img src={props.value} className="h-full w-full object-contain"></img>
+        <img src={props.value} className="h-full w-full object-cover"></img>
       ) : (
         <div className={cn(styles["bg-transparent"], "h-full")}></div>
       );
