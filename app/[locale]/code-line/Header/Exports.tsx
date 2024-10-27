@@ -9,6 +9,7 @@ import { useCallback } from "react";
 import html2canvas from "html2canvas";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslations } from "next-intl";
+import { CopyIcon, DownloadIcon } from "@radix-ui/react-icons";
 
 function simulateDownloadImageClick(uri: string, filename: string) {
   const link = document.createElement("a");
@@ -96,11 +97,18 @@ const Exports = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">{t("export.text")}</Button>
+        <Button variant="outline">
+          <DownloadIcon/>
+          {t("export.text")}
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem onClick={handleExportPNG}>{t("export.png")}</DropdownMenuItem>
-        <DropdownMenuItem onClick={handleCopyImage}>{t("export.copy")}</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleExportPNG}>
+        <DownloadIcon/>
+          {t("export.png")}</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleCopyImage}>
+           <CopyIcon/>
+          {t("export.copy")}</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

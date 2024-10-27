@@ -15,7 +15,6 @@ import { useSearchParams } from "next/navigation";
 import { Switch } from "@/components/ui/switch";
 import { CheckIcon, CodeIcon } from "@radix-ui/react-icons";
 import {useTranslations} from 'next-intl';
-import {Link} from '@/i18n/routing';
 
 const Embed = () => {
   const t = useTranslations("code-line.header");
@@ -57,7 +56,9 @@ const Embed = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">{t("embed.text")}</Button>
+        <Button variant="outline">
+          <CodeIcon />
+          {t("embed.text")}</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[1000px] max-h-[90%] min-h-[50%] overflow-hidden flex flex-col">
         <DialogHeader>
