@@ -856,7 +856,7 @@ export const lngList = [
 ];
 export const lightThemeCaretColor = "rgb(239 68 68)";
 export const themeList = [
-  { label: "Andromeeda", value: "andromeeda", background: "#23262E" },
+  // { label: "Andromeeda", value: "andromeeda", background: "#23262E" },
   { label: "Aurora X", value: "aurora-x", background: "#07090F" },
   { label: "Ayu Dark", value: "ayu-dark", background: "#0b0e14" },
   {

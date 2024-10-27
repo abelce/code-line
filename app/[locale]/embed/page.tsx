@@ -5,7 +5,7 @@ import useGetInitState from "@/hooks/useGetInitState";
 import { BgType } from "../code-line/Setting/Backdrop";
 
 const Content = () => {
-  const { code, padding, lang, theme, title, backdropType, backdrop, copyBtn } =
+  const { code, padding, lang, theme, title, backdropType, backdrop, copyBtn, lineNum } =
     useGetInitState();
 
   return (
@@ -19,6 +19,7 @@ const Content = () => {
         backdropType={backdropType as BgType}
         backdrop={backdrop}
         copyBtn={copyBtn}
+        lineNum={lineNum}
         mode={Mode.View}
       ></Frame>
     </div>

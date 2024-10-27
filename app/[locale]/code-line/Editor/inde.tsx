@@ -68,13 +68,14 @@ const Editor = (props: EditorProps) => {
 
   return (
     <div
-      className={cn("h-full w-full relative overflow-x-auto")}
+      className={cn("h-full w-full relative overflow-x-auto", styles.editor)}
       id="code-editor"
     >
       <CodeViewer
         code={props.code}
         lang={props.lang}
         theme={props.theme}
+        lineNum={props.lineNum}
         className="flex-1"
       />
       {props.mode === Mode.Edit ? (
@@ -89,7 +90,7 @@ const Editor = (props: EditorProps) => {
           className={cn(
             "bg-transparent resize-none  whitespace-pre-wrap absolute inset-0",
             commonStyle,
-            styles.editor
+            styles.textarea
           )}
           ref={ref}
           value={props.code}

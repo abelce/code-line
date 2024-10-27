@@ -31,7 +31,8 @@
                 },
                 "theme": "Theme",
                 "padding": "Padding",
-                "language": "Language"
+                "language": "Language",
+                "line-number": "Line Number"
             }
         }
     }

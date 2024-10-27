@@ -25,6 +25,7 @@ const useGetInitState = () => {
       backdropType: searchParams.get("backdropType"),
       backdrop: searchParams.get("backdrop") || "",
       copyBtn: searchParams.get("copyBtn") === "true",
+      lineNum: searchParams.get("lineNum") === "true",
     };
 
     if (!obj.backdropType) {

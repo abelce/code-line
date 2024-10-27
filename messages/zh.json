@@ -31,7 +31,8 @@
                 },
                 "theme": "主题",
                 "padding": "内边距",
-                "language": "语言"
+                "language": "语言",
+                "line-number": "行号"
             }
         }
     }

@@ -10,6 +10,7 @@ import { lngList, paddingList, themeList } from "../../config";
 import { SearchSelect } from "@/components/SearchSelect";
 import { useTranslations } from "next-intl";
 import Backdrop, { BgType } from "./Backdrop";
+import { Switch } from "@/components/ui/switch";
 
 interface SettingProps {
   lang: string;
@@ -21,6 +22,8 @@ interface SettingProps {
   backdrop: string;
   backdropType: BgType;
   updateBackdrop: (type: BgType, backdrop: string) => void;
+  lineNum: boolean;
+  updateLineNum: (lineNum: boolean) => void; 
 }
 
 const Item = ({ label, children }: { label: string; children: ReactNode }) => {
@@ -73,6 +76,9 @@ const Setting = (props: SettingProps) => {
           onChange={props.updateLng}
           options={lngList}
         ></SearchSelect>
+      </Item>
+      <Item label={t("line-number")}>
+        <Switch checked={props.lineNum} onCheckedChange={props.updateLineNum}></Switch>
       </Item>
     </div>
   );

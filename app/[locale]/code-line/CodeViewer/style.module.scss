@@ -3,31 +3,41 @@
     tab-size: 2;
     margin: 0;
     text-wrap-mode: wrap;
+    tab-size: 2;
+    margin: 0;
+    font-family: inherit;
+    counter-reset: step;
+    counter-increment: step 0;
+    font-variant-ligatures: none;
 
     :global {
         pre {
             margin: 0;
-            /* // background-color: initial !important; */
             font-family: inherit;
             white-space: pre-wrap
         }
 
         code {
             font-family: inherit;
-        }
 
-        .line {
-            display: inline-block;
-            width: calc(100% + 32px);
-            padding: 0 16px;
-            margin: 0 -16px;
-            transition: width .2s, padding .2s, margin .2s
+            .line {
+                display: inline-block;
+                width: calc(100% + 32px);
+                padding: 0 16px;
+                margin: 0 -16px;
+                transition: width .2s, padding .2s, margin .2s;
+
+                .line-number {
+                    padding-right: 20px;
+                    text-align: right;
+                    display: inline-block;
+                    width: var(--line-number-width);
+                    user-select: none;
+                    color: #808080;
+                }
+            }
         }
     }
 }
 
-.viewer {
-    /* // -webkit-text-fill-color: transparent;
-    // caret-color: red;
-    // font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
-}
+.viewer {}

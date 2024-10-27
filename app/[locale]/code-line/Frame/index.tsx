@@ -104,6 +104,7 @@ const Frame = (props: Props) => {
             theme={theme}
             onChange={props.onChange}
             mode={props.mode}
+            lineNum={props.lineNum}
           ></Editor>
         </div>
       </div>

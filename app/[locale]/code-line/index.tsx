@@ -25,6 +25,7 @@ const CodeLine = () => {
   const [width, setWidth] = useState(defaultStates.width);
   const [backdrop, setBackdrop] = useState(defaultStates.backdrop);
   const [backdropType, setBackdropType] = useState(defaultStates.backdropType);
+  const [lineNum, setLineNum] = useState(defaultStates.lineNum);
   const _frameContainerRef = useRef<HTMLDivElement>(null);
   const _frameRef = useRef<HTMLDivElement>(null);
 
@@ -95,6 +96,14 @@ const CodeLine = () => {
     [updateSearchParams]
   );
 
+  const updateLineNum = useCallback(
+    (lineNum: boolean) => {
+      setLineNum(lineNum);
+      updateSearchParams("lineNum", lineNum);
+    },
+    [updateSearchParams]
+  );
+
   useEffect(() => {
     updateSearchParams("code", format_code(code));
   }, []);
@@ -149,6 +158,7 @@ const CodeLine = () => {
                       backdrop={backdrop}
                       mode={Mode.Edit}
                       copyBtn={false}
+                      lineNum={lineNum}
                     ></Frame>
                   </div>
                 </Resizeable>
@@ -166,6 +176,8 @@ const CodeLine = () => {
           backdropType={backdropType as BgType}
           backdrop={backdrop}
           updateBackdrop={updateBackdrop}
+          lineNum={lineNum}
+          updateLineNum={updateLineNum}
         />
       </div>
     </div>
