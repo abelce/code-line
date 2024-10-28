@@ -24,34 +24,40 @@ const geistMono = localFont({
 const logoUrl = "/images/logo.png";
 const canonical = "/";
 
-export const metadata: Metadata = {
-  title: SITE_NAME,
-  description: SITE_DESC,
-  icons: {
-    icon: "/favicon.ico",
-  },
-  authors: [
-    {
-      name: "Abelce,wxabelce@gmail.com",
+type Props = {
+  params: { locale: string };
+};
+
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: SITE_NAME,
+    description: SITE_DESC[params.locale],
+    icons: {
+      icon: "/favicon.ico",
     },
-  ],
-  alternates: {
-    canonical: canonical,
-  },
-  creator: "Abelce",
-  publisher: "Abelce",
-  applicationName: SITE_NAME,
-  openGraph: {
-    type: "website",
-    url: canonical,
-    title: SITE_NAME,
-    images: [logoUrl],
-  },
-  twitter: {
-    site: "@site",
-    title: SITE_NAME,
-    images: [logoUrl],
-  },
+    authors: [
+      {
+        name: "Abelce,wxabelce@gmail.com",
+      },
+    ],
+    alternates: {
+      canonical: canonical,
+    },
+    creator: "Abelce",
+    publisher: "Abelce",
+    applicationName: SITE_NAME,
+    openGraph: {
+      type: "website",
+      url: canonical,
+      title: SITE_NAME,
+      images: [logoUrl],
+    },
+    twitter: {
+      site: "@site",
+      title: SITE_NAME,
+      images: [logoUrl],
+    },
+  };
 };
 
 export default async function RootLayout(

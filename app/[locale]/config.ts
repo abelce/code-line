@@ -1095,7 +1095,10 @@ export const backgroundList = [
 
 
 export const SITE_NAME = "CodePic.cc"
-// CodePic.cc 可以创建和分享你的代码片段，无需登录，操作简单。
-export const SITE_DESC = "CodePic.cc creates and shares your code snippets with no login required and easy to use."
+export const SITE_DESC: Record<string, string> = {
+  "en": "CodePic.cc is an online tool for turning code snippets into images that can be exported as images, copied to the clipboard, or embedded directly into documents via links.",
+  "zh": "CodePic.cc 是一个将代码片段转为图片的在线工具，可以导出为图片、复制到剪切板，也可以直接通过链接嵌入文档。"
+}
 
 export const isDev = process.env.NODE_ENV === "development";
+

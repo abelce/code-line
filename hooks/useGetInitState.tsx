@@ -31,7 +31,7 @@ const useGetInitState = () => {
     if (!obj.backdropType) {
       obj.backdropType = "color";
       obj.backdrop =
-        "linear-gradient(to right, rgb(239, 68, 68), rgb(249, 115, 22))";
+        "linear-gradient(to right, rgb(217, 70, 239), rgb(6, 182, 212))";
     }
 
     return obj;
