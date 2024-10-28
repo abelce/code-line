@@ -15,5 +15,5 @@ export default function RootPage(props: any) {
   //   }
   // console.log(`/en/${pathname}?${searchParams.toString()}`)
   // redirect(`/en/${pathname}?${searchParams.toString()}`);
-  // redirect("/en");
+  redirect("/en");
 }
