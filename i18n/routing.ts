@@ -1,13 +1,16 @@
 import { defineRouting } from "next-intl/routing";
 import { createNavigation } from "next-intl/navigation";
 
+const NEXT_PUBLIC_LOCALES = ["en", "zh"]; // 语言列表
+const DEFAULT_LOCALE = "en"; // 默认语言
+
 export const routing = defineRouting({
   localePrefix: "always",
   // A list of all locales that are supported
-  locales: ["en", "zh"],
+  locales: NEXT_PUBLIC_LOCALES,
 
   // Used when no locale matches
-  defaultLocale: "en",
+  defaultLocale: DEFAULT_LOCALE,
 });
 
 // Lightweight wrappers around Next.js' navigation APIs
