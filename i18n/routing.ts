@@ -5,7 +5,7 @@ const NEXT_PUBLIC_LOCALES = ["en", "zh"]; // 语言列表
 const DEFAULT_LOCALE = "en"; // 默认语言
 
 export const routing = defineRouting({
-  localePrefix: "always",
+  // localePrefix: "always",
   // A list of all locales that are supported
   locales: NEXT_PUBLIC_LOCALES,
 
