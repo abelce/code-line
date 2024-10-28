@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import variables from "./variables.module.scss";
 import { Toaster } from "@/components/ui/toaster";
@@ -10,16 +11,38 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound, redirect, usePathname } from "next/navigation";
 import { routing } from "@/i18n/routing";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
+const inter = FontSans({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const sourceCodePro = localFont({
+  src: "./fonts/SourceCodePro-Regular.ttf",
+  variable: "--font-source-code-pro",
   weight: "100 900",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
+const jetBrainsMono = localFont({
+  src: "./fonts/JetBrainsMono-Light.ttf",
+  variable: "--font-JetBrainsMono",
   weight: "100 900",
 });
+
+// const sourceCodePro = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
+//   variable: "--font-geist-sans",
+//   weight: "100 900",
+// });
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 const logoUrl = "/images/logo.png";
 const canonical = "/";
@@ -91,7 +114,8 @@ export default async function RootLayout(
         )}
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} dark antialiased h-screen w-screen overflow-hidden`}
+        // className={`${geistSans.variable} ${geistMono.variable} dark antialiased h-screen w-screen overflow-hidden`}
+        className={`${inter.variable} ${sourceCodePro.variable} ${jetBrainsMono.variable} font-inter  dark antialiased h-screen w-screen overflow-hidden`}
       >
         <NextIntlClientProvider messages={messages}>
           {children}

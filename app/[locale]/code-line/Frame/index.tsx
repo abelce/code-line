@@ -1,10 +1,16 @@
 import { CSSProperties, useMemo, useState } from "react";
-import styles from "./style.module.scss";
 import { cn } from "@/lib/utils";
 import Editor, { EditorProps, Mode } from "../Editor/inde";
 import CopyCode from "./CopyCode";
 import { getTheme } from "../../config";
 import { BgType } from "../Setting/Backdrop";
+import styles from "./style.module.scss";
+
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 interface Props extends EditorProps {
   padding: number;
@@ -65,7 +71,7 @@ const Frame = (props: Props) => {
   }, [theme, mode, title]);
 
   return (
-    <div id="frame" className="relative h-full flex">
+    <div id="frame" className={cn("relative h-full flex", styles.frame, "font-jetBrainsMono" )}>
       <div
         className={cn(
           "flex-1 flex rounded transition-all duration-200",
