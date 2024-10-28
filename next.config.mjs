@@ -5,18 +5,18 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
     output: "standalone",
-    async rewrites() {
-        return [
-          {
-            source: '/',
-            destination: '/en',
-          },
-          {
-            source: '/embed',
-            destination: '/en/embed',
-          },
-        ]
-      },
+    // async rewrites() {
+    //     return [
+    //       {
+    //         source: '/',
+    //         destination: '/en',
+    //       },
+    //       {
+    //         source: '/embed',
+    //         destination: '/en/embed',
+    //       },
+    //     ]
+    //   },
 };
 
 export default withNextIntl(nextConfig);
