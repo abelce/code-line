@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
-import variables from "./variables.module.scss";
 import { Toaster } from "@/components/ui/toaster";
-import { isDev, SITE_DESC, SITE_NAME } from "./config";
+import { isDev, SITE_NAME } from "./config";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
-import { notFound, redirect, usePathname } from "next/navigation";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
+import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -52,10 +51,11 @@ type Props = {
   params: { locale: string };
 };
 
-export const generateMetadata = ({ params }: Props): Metadata => {
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+  const t = await getTranslations({locale: params.locale, namespace: 'metadata'});
   return {
     title: SITE_NAME,
-    description: SITE_DESC[params.locale],
+    description: t("site-desc"),
     icons: {
       icon: "/favicon.ico",
     },

@@ -11,20 +11,22 @@ import { useParams, useSearchParams } from "next/navigation";
 
 const LocalSwitcher = () => {
   const t = useTranslations("code-line.header");
-  const params = useParams();
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const currentLocale = (params.locale || "en") as string;
+  const currentLocale = useLocale();
 
   const handleOnChange = (newLocale: string) => {
-    const prefix = `/${currentLocale}`;
-    const _newPathname = pathname.startsWith(prefix) ? pathname.slice(prefix.length) : pathname
-    router.push({
-        pathname: `/${_newPathname}?${searchParams.toString()}`,
-    }, {locale: newLocale});
+    // const prefix = `/${currentLocale}`;
+    // const _newPathname = pathname.startsWith(prefix) ? pathname.slice(prefix.length) : pathname
+    router.push(
+      {
+        pathname: `/${pathname}?${searchParams.toString()}`,
+      },
+      { locale: newLocale }
+    );
   };
-  
+
   return (
     <Select value={currentLocale} onValueChange={handleOnChange}>
       <SelectTrigger className="w-[120px]">
