@@ -10,6 +10,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound, redirect, usePathname } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = FontSans({
   variable: "--font-inter",
@@ -121,6 +122,7 @@ export default async function RootLayout(
           {children}
           <Toaster />
         </NextIntlClientProvider>
+        {isDev ? null : <Analytics />}
       </body>
     </html>
   );
