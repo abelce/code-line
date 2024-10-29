@@ -1,5 +1,6 @@
 {
     "metadata": {
+        "site-title": "CodePic.cc: 将代码片段转为图片",
         "site-desc": "CodePic.cc 是一个将代码片段转为图片的在线工具，可以导出为图片、复制到剪切板，也可以直接通过链接嵌入文档。"
     },
     "code-line": {

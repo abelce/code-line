@@ -54,7 +54,7 @@ type Props = {
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
   const t = await getTranslations({locale: params.locale, namespace: 'metadata'});
   return {
-    title: SITE_NAME,
+    title: t("site-title"),
     description: t("site-desc"),
     icons: {
       icon: "/favicon.ico",

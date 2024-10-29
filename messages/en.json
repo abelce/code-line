@@ -1,5 +1,6 @@
 {
     "metadata": {
+        "site-title": "CodePic.cc: Turnning code snippets into images",
         "site-desc": "CodePic.cc is an online tool for turning code snippets into images that can be exported as images, copied to the clipboard, or embedded directly into documents via links."
     },
     "code-line": {

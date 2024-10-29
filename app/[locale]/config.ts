@@ -1094,7 +1094,7 @@ export const backgroundList = [
   },
 ];
 
-export const SITE_NAME = "CodePic.cc";
+export const SITE_NAME = "CodePic.cc - Turnning code snippets into images";
 export const SITE_DESC: Record<string, string> = {
   en: "CodePic.cc is an online tool for turning code snippets into images that can be exported as images, copied to the clipboard, or embedded directly into documents via links.",
   zh: "CodePic.cc 是一个将代码片段转为图片的在线工具，可以导出为图片、复制到剪切板，也可以直接通过链接嵌入文档。",
