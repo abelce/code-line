@@ -5,6 +5,7 @@
     },
     "code-line": {
         "header": {
+            "fallback": "反馈",
             "copy-link": "复制链接",
             "embed": {
                 "text": "嵌入代码",

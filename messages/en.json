@@ -5,6 +5,7 @@
     },
     "code-line": {
         "header": {
+            "fallback": "Fallback",
             "copy-link": "Copy LinK",
             "embed": {
                 "text": "Embed",

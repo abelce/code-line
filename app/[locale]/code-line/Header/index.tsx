@@ -1,9 +1,8 @@
-import Image from "next/image";
 import Embed from "./Embed";
 import Exports from "./Exports";
-import Link from "next/link";
 import LocalSwitcher from "./LocalSwitcher";
 import CopyLink from "./CodeLink";
+import Fallback from "./Fallback";
 
 const Header = () => {
   return (
@@ -15,6 +14,7 @@ const Header = () => {
         </div>
       </div>
       <div className="flex gap-4">
+        <Fallback />
         <CopyLink />
         <Embed />
         <Exports />
