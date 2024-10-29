@@ -38,7 +38,7 @@ const Item = ({ label, children }: { label: string; children: ReactNode }) => {
 const Setting = (props: SettingProps) => {
   const t = useTranslations("code-line.main.setting")
   return (
-    <div className="absolute top-8 left-0 border w-[300px] p-4 rounded">
+    <div className="w-[324px] h-full p-4 rounded overflow-x-auto">
       <Item label={t("backdrop")}>
         <Backdrop type={props.backdropType} value={props.backdrop} onChange={props.updateBackdrop}></Backdrop>
       </Item>

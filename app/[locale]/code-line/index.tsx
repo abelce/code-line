@@ -140,8 +140,21 @@ const CodeLine = () => {
   return (
     <div className="h-full flex flex-col">
       <Header></Header>
-      <div className="flex-1 relative overflow-hidden">
-        <div className="relative ml-[324px] h-full border border-t-0 border-r-0 border-b-0">
+      <div className="flex-1 relative overflow-hidden flex flex-row">
+      <Setting
+          lang={lang}
+          updateLng={updateLng}
+          padding={padding}
+          updatePadding={updatePadding}
+          theme={theme}
+          updateTheme={updateTheme}
+          backdropType={backdropType as BgType}
+          backdrop={backdrop}
+          updateBackdrop={updateBackdrop}
+          lineNum={lineNum}
+          updateLineNum={updateLineNum}
+        />
+        <div className="flex-1 relative h-full border border-t-0 border-r-0 border-b-0">
           <div className="h-full overflow-y-auto">
             <div className="p-8" ref={_frameContainerRef}>
               <div className="flex justify-center">
@@ -167,19 +180,6 @@ const CodeLine = () => {
             </div>
           </div>
         </div>
-        <Setting
-          lang={lang}
-          updateLng={updateLng}
-          padding={padding}
-          updatePadding={updatePadding}
-          theme={theme}
-          updateTheme={updateTheme}
-          backdropType={backdropType as BgType}
-          backdrop={backdrop}
-          updateBackdrop={updateBackdrop}
-          lineNum={lineNum}
-          updateLineNum={updateLineNum}
-        />
       </div>
     </div>
   );
