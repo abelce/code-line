@@ -3,7 +3,6 @@ export async function imgToBase64(src: string): Promise<string> {
     const img = new Image();
     
     img.onload = () => {
-      debugger;
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
       canvas.width = img.width;
@@ -19,7 +18,6 @@ export async function imgToBase64(src: string): Promise<string> {
     };
 
     img.onerror = (err) => {
-      debugger;
         reject(err);
     }
 

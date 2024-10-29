@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { codeToHtml } from "shiki";
 import { cn } from "@/lib/utils";
 import styles from "./style.module.scss";
 import { CodeLineEvent, event_calc_frame_height } from "../event";
-import _throttle from "lodash";
+import _throttle, { throttle } from "lodash";
 import { getCodeLine, lineNumberTransformer } from "./lineNumberTransformer";
 
 export interface CodeViewerProps {
@@ -23,39 +23,52 @@ const CodeViewer = ({
   className,
 }: CodeViewerProps) => {
   const [html, setHtml] = useState("");
+  const caleRef = useRef(() => {});
+
+  useMemo(() => {
+    caleRef.current = throttle(() => {
+      CodeLineEvent.emit(event_calc_frame_height);
+    }, 100);
+  }, []);
 
   useEffect(() => {
     const load = async () => {
-      const transformers = [];
-      if (lineNum) {
-        transformers.push(lineNumberTransformer);
-      }
-      const html = await codeToHtml(code, {
-        lang: lang,
-        theme,
-        transformers,
-      });
-      setHtml(html);
-      //  设置样式
-      if (!lineNum) {
-        document.documentElement.style.setProperty("--line-number-width", `0px`);
-      } else {
-        const codeLine = getCodeLine();
-        const charNums = `${codeLine}`.split("").length;
-        document.documentElement.style.setProperty(
-          "--line-number-width",
-          `calc(${charNums}ch + 20px)`
-        );
+      try {
+        const transformers = [];
+        if (lineNum) {
+          transformers.push(lineNumberTransformer);
+        }
+        const html = await codeToHtml(code, {
+          lang: lang,
+          theme,
+          transformers,
+        });
+        console.log("code:", code.length, " html:", html.length);
+        setHtml(html);
+        //  设置样式
+        if (!lineNum) {
+          document.documentElement.style.setProperty(
+            "--line-number-width",
+            `0px`
+          );
+        } else {
+          const codeLine = getCodeLine();
+          const charNums = `${codeLine}`.split("").length;
+          document.documentElement.style.setProperty(
+            "--line-number-width",
+            `calc(${charNums}ch + 20px)`
+          );
+        }
+      } catch (err) {
+        console.error(err);
       }
     };
 
     load();
   }, [code, lang, lineNum, theme]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      CodeLineEvent.emit(event_calc_frame_height);
-    });
+  useLayoutEffect(() => {
+    // caleRef.current();
   }, [html]);
 
   return (

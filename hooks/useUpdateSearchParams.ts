@@ -1,11 +1,7 @@
-import { usePathname } from "next/navigation";
 import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
 import { useCallback, useMemo, useRef } from "react";
 
 const useUpdateSearchParams = () => {
-  const pathname = usePathname();
-  const { replace } = useRouter();
   const _searchParams = useSearchParams();
   const updateSearchParamsRef = useRef<(key: string, value: any) => void>(
     () => {}
@@ -23,7 +19,16 @@ const useUpdateSearchParams = () => {
     // }
     baseSearchParams.set(key, value);
 
-    replace(`${pathname}?${baseSearchParams.toString()}`);
+    // router.replace(pathname + '?' + createQueryString('sort', 'asc'))
+    // router.replace(`${pathname}?${baseSearchParams.toString()}`, {
+    //   locale: _locale,
+    // });
+
+    window.history.replaceState(
+      null,
+      "",
+      `${location.pathname}?${baseSearchParams.toString()}`
+    );
   };
 
   updateSearchParamsRef.current = updateSearchParams;

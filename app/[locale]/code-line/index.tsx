@@ -57,6 +57,7 @@ const CodeLine = () => {
 
   const updateTheme = useCallback(
     (theme: string) => {
+      console.log("theme:", theme)
       setTheme(theme);
       updateSearchParams("theme", theme);
     },
