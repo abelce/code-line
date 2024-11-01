@@ -86,7 +86,7 @@ const Embed = () => {
                 {t("embed.copy-embed-code")}
               </Button>
             </div>
-            <div className="flex-1 overflow-x-auto">
+            <div className="flex-1 overflow-y-auto">
               <iframe
                 ref={iframeRef}
                 className="codepic_cc"
