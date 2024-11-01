@@ -14,13 +14,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Switch } from "@/components/ui/switch";
 import { CheckIcon, CodeIcon } from "@radix-ui/react-icons";
-import {useTranslations} from 'next-intl';
+import { useTranslations } from "next-intl";
 
 const Embed = () => {
   const t = useTranslations("code-line.header");
   const searchParams = useSearchParams();
   const [embedLink, setEmbedLink] = useState("");
-  const [copyBtn, setCoptBtn] = useState(false);
+  const [copyBtn, setCoptBtn] = useState(true);
   const [copied, setCopied] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -58,7 +58,8 @@ const Embed = () => {
       <DialogTrigger asChild>
         <Button variant="outline">
           <CodeIcon />
-          {t("embed.text")}</Button>
+          {t("embed.text")}
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[1000px] max-h-[90%] min-h-[50%] overflow-hidden flex flex-col">
         <DialogHeader>
@@ -68,7 +69,7 @@ const Embed = () => {
           <div className="flex-1 flex gap-4 overflow-hidden">
             <div className="w-64 pr-2">
               <DialogDescription>
-                <p>{t('embed.desc')}</p>
+                <p>{t("embed.desc")}</p>
                 <p className="mt-2">{t("embed.notice")}</p>
               </DialogDescription>
               <Separator className="my-4" />
@@ -92,11 +93,11 @@ const Embed = () => {
                 className="codepic_cc"
                 src={embedLink}
                 loading="lazy"
-                allowTransparency
+                allowTransparency={true}
                 allowFullScreen
                 height={Number(height)}
                 width="100%"
-                style={{ widows: "100%", border: "none" }}
+                style={{ width: "100%", border: "none", backgroundColor: "transparent" }}
               ></iframe>
             </div>
           </div>
