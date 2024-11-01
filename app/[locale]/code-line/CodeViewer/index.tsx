@@ -68,7 +68,7 @@ const CodeViewer = ({
   }, [code, lang, lineNum, theme]);
 
   useLayoutEffect(() => {
-    // caleRef.current();
+    caleRef.current();
   }, [html]);
 
   return (
