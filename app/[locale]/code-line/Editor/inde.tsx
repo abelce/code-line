@@ -68,7 +68,7 @@ const Editor = (props: EditorProps) => {
 
   return (
     <div
-      className={cn("h-full w-full relative overflow-y-auto", styles.editor)}
+      className={cn("h-full w-full relative overflow-x-hidden overflow-y-auto", styles.editor)}
       id="code-editor"
     >
       <CodeViewer
