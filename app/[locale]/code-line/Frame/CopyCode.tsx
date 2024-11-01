@@ -21,7 +21,7 @@ const CopyCode = (props: Props) => {
       <Button
         variant={"outline"}
         size="sm"
-        className="absolute right-1 px-3 h-6"
+        className="px-3 h-6"
         onMouseOut={handleMouseOut}
       >
         {copied ? (

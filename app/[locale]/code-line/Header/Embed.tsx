@@ -90,6 +90,7 @@ const Embed = () => {
             <div className="flex-1 overflow-y-auto">
               <iframe
                 ref={iframeRef}
+                title={searchParams.get("title") || ""}
                 className="codepic_cc"
                 src={embedLink}
                 loading="lazy"
