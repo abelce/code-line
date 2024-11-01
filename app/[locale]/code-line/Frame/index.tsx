@@ -71,16 +71,16 @@ const Frame = (props: Props) => {
   }, [theme, mode, title]);
 
   return (
-    <div id="frame" className={cn("relative h-full flex", styles.frame, "font-jetBrainsMono" )}>
+    <div id="frame" className={cn("relative h-full flex max-w-full", styles.frame, "font-jetBrainsMono" )}>
       <div
         className={cn(
-          "flex-1 flex rounded transition-all duration-200",
+          "flex-1 flex rounded transition-all duration-200 max-w-full",
           styles["bg-transparent"]
         )}
         style={containerStyles}
       >
         <div
-          className="flex-1 flex flex-col rounded pt-1 relative group"
+          className="flex-1 flex flex-col rounded pt-1 relative group max-w-full"
           style={contentStyles}
         >
           <div className={cn("px-4", styles.header)}>
