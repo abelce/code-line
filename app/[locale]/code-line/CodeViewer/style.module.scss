@@ -26,6 +26,7 @@
                 padding: 0 16px;
                 margin: 0 -16px;
                 transition: width .2s, padding .2s, margin .2s;
+                word-wrap: break-word;
 
                 .line-number {
                     padding-right: 20px;
