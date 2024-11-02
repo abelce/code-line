@@ -76,7 +76,7 @@ const CodeViewer = ({
       id="code-viewer"
       tabIndex={0}
       dangerouslySetInnerHTML={{ __html: html }}
-      className={cn("p-4", commonStyle, className)}
+      className={cn("px-4 py-2", commonStyle, className)}
     ></div>
   );
 };
