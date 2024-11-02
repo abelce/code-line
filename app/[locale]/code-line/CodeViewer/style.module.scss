@@ -26,7 +26,8 @@
                 margin: 0 -16px;
                 position: relative;
                 // padding: 0 16px;
-                padding: 0 16px 0 calc(var(--line-number-width) + 16px);
+                padding-right: 1rem;
+                padding-left: calc(var(--line-number-width) + 1rem);
                 transition: width .2s, padding .2s, margin .2s;
                 word-wrap: break-word;
 
