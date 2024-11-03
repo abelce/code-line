@@ -9,6 +9,7 @@ let cacheTime: number;
 export async function GET(request: Request) {
   if (cacheData && cacheTime && dayjs(cacheTime).add(10, "m").isAfter(dayjs())) {
     // 缓存十分钟
+    // @ts-ignore
     return Response.json({ data: cacheData }, { status: 200 });
   }
   const result = await getUnsplashTopicList();
