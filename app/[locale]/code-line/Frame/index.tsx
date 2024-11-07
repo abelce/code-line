@@ -131,10 +131,10 @@ const Frame = (props: Props) => {
               [styles["header-embed"]]: isEmbedPage,
             })}
           >
-            <div className="flex gap-1 items-center">
-              <div className="h-3 w-3 rounded-full bg-gray-400"></div>
-              <div className="h-3 w-3 rounded-full bg-gray-400"></div>
-              <div className="h-3 w-3 rounded-full bg-gray-400"></div>
+            <div className="flex gap-1.5 items-center">
+              <div className={cn("h-3 w-3 rounded-full", styles["win-close"])}></div>
+              <div className={cn("h-3 w-3 rounded-full", styles["win-min"])}></div>
+              <div className={cn("h-3 w-3 rounded-full", styles["win-full"])}></div>
             </div>
             {renderTitle()}
             <div className="hidden group-hover:flex flex-row justify-end gap-[2px]">

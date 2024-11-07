@@ -70,7 +70,7 @@ const Embed = () => {
             <div className="w-64 pr-2">
               <DialogDescription>
                 <p>{t("embed.desc")}</p>
-                <p className="mt-2">{t("embed.notice")}</p>
+                {/* <p className="mt-2">{t("embed.notice")}</p> */}
               </DialogDescription>
               <Separator className="my-4" />
               <div className="flex justify-between items-center gap-4">

@@ -36,7 +36,7 @@ const CodeViewer = ({
       try {
         const transformers = [];
         if (lineNum) {
-          transformers.push(lineNumberTransformer);
+        transformers.push(lineNumberTransformer);
         }
         const html = await codeToHtml(code, {
           lang: lang,

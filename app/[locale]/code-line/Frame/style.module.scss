@@ -3,6 +3,7 @@
     display: grid;
     grid-template-columns: 64px 1fr 64px;
     gap: 12px;
+    
 }
 .header-embed {
     display: flex;
@@ -17,4 +18,16 @@
 
 .frame {
     font-family: var(--font-JetBrainsMono), "Source Code Pro", Menlo, Monaco, "Courier New", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", monospace;
+}
+
+.win {
+    &-close {
+        background-color: rgb(238, 108, 94);
+    }
+    &-min {
+        background-color: rgb(246, 191, 80);
+    }
+    &-full {
+        background-color: rgb(98, 198, 85);
+    }
 }

@@ -107,6 +107,9 @@ const CodeLine = () => {
 
   useEffect(() => {
     updateSearchParams("code", format_code(code));
+    updateSearchParams("backdropType", backdropType);
+    updateSearchParams("backdrop", backdrop);
+    updateSearchParams("padding", String(padding));
   }, []);
 
   useEffect(() => {

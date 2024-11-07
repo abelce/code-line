@@ -22,16 +22,16 @@ const useGetInitState = () => {
         24,
       title: searchParams.get("title") || "",
       width: Math.max(Number(searchParams.get("width")) || 0, frameMinWidth),
-      backdropType: searchParams.get("backdropType"),
+      backdropType: searchParams.get("backdropType") || "",
       backdrop: searchParams.get("backdrop") || "",
       copyBtn: searchParams.get("copyBtn") === "true",
       lineNum: searchParams.get("lineNum") === "true",
     };
 
     if (!obj.backdropType) {
-      obj.backdropType = "color";
+      obj.backdropType = "image";
       obj.backdrop =
-        "linear-gradient(to right, rgb(217, 70, 239), rgb(6, 182, 212))";
+        "https://images.unsplash.com/photo-1730908706088-df9aabe913ba?ixid=M3w2Njg2NTJ8MHwxfHRvcGljfHw2c01WalRMU2tlUXx8fHx8Mnx8MTczMDk2NjY4N3w&ixlib=rb-4.0.3&crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800";
     }
 
     return obj;
