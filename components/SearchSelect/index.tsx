@@ -65,7 +65,7 @@ export function SearchSelect<T>(props: Props<T>) {
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search data..." className="h-9" />
+          <CommandInput className="h-9" />
           <CommandList>
             <CommandEmpty>No data found.</CommandEmpty>
             <CommandGroup>
