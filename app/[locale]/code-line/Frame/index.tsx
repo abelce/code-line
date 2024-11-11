@@ -88,6 +88,7 @@ const Frame = (props: Props) => {
           placeholder="Untitiled"
           onChange={(e) => updateTitle?.(e.target.value || "")}
           disabled={mode === Mode.View}
+          autoComplete="off"
         />
       </div>
     );
