@@ -2,7 +2,7 @@ import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 
 const exampleCode = `function main() {
-    console.log("Hello world);
+    console.log("Hello world");
 }`;
 
 export const frameMinWidth = 480;
