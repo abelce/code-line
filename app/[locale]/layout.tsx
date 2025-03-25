@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { isDev, SITE_NAME } from "./config";
+import { isDev, SITE_KEYWORDS, SITE_NAME } from "./config";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -59,6 +59,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
     icons: {
       icon: "/favicon.ico",
     },
+    keywords: SITE_KEYWORDS,
     authors: [
       {
         name: "Abelce,wxabelce@gmail.com",

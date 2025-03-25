@@ -38,7 +38,13 @@
                 "padding": "内边距",
                 "language": "语言",
                 "line-number": "行号"
+            },
+            "content": {
+                "untitled": "无标题"
             }
+        },
+        "embed": {
+            "copy-code": "复制代码"
         }
     }
 }

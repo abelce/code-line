@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { CheckIcon } from "@radix-ui/react-icons";
+// import { useTranslations } from "next-intl";
 import { useCallback, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 
@@ -9,6 +10,7 @@ interface Props {
 
 const CopyCode = (props: Props) => {
   const [copied, setCopied] = useState(false);
+  // const t = useTranslations("code-line.embed");
 
   const handleMouseOut = useCallback(() => {
     if (copied) {

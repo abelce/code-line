@@ -7,6 +7,7 @@ import { BgType } from "../Setting/Backdrop";
 import styles from "./style.module.scss";
 import EditBtn from "./EditBtn";
 import { usePathname } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 // const geistMono = localFont({
 //   src: "./fonts/GeistMonoVF.woff",
@@ -27,6 +28,7 @@ interface Props extends EditorProps {
 let currentBaackdrop = "";
 
 const Frame = (props: Props) => {
+  const t = useTranslations("code-line.main.content");
   const {
     padding,
     code,
@@ -85,7 +87,7 @@ const Frame = (props: Props) => {
           className="w-full bg-transparent text-center text-sm outline-0"
           style={inputStyles}
           value={title}
-          placeholder="Untitiled"
+          placeholder={t("untitled")}
           onChange={(e) => updateTitle?.(e.target.value || "")}
           disabled={mode === Mode.View}
           autoComplete="off"

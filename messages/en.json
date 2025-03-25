@@ -38,7 +38,13 @@
                 "padding": "Padding",
                 "language": "Language",
                 "line-number": "Line Number"
+            },
+            "content": {
+                "untitled": "Untitled"
             }
+        },
+        "embed": {
+            "copy-code": "Copy"
         }
     }
 }
