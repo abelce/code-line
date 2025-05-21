@@ -7,12 +7,14 @@ const exampleCode = `function main() {
 
 export const frameMinWidth = 480;
 
+
+
 const useGetInitState = () => {
   const searchParams = useSearchParams();
   const ddefaultStates = useMemo(() => {
     const obj = {
       code:
-        Buffer.from(searchParams.get("code") || "", "base64").toString(
+      Buffer.from(searchParams.get("code") || "", "base64").toString(
           "utf-8"
         ) || exampleCode,
       lang: searchParams.get("lang") || "javascript",
@@ -25,7 +27,8 @@ const useGetInitState = () => {
       backdropType: searchParams.get("backdropType") || "",
       backdrop: searchParams.get("backdrop") || "",
       copyBtn: searchParams.get("copyBtn") === "true",
-      lineNum: searchParams.get("lineNum") === "true",
+      lineNum: searchParams.get("lineNum") ? searchParams.get("lineNum") === "true" : true,
+      fontSize: Number(searchParams.get("fontSize")) || 15,
     };
 
     if (!obj.backdropType) {

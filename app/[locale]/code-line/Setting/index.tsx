@@ -6,11 +6,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { lngList, paddingList, themeList } from "../../config";
+import { fontSizeList, lngList, paddingList, themeList } from "../../config";
 import { SearchSelect } from "@/components/SearchSelect";
 import { useTranslations } from "next-intl";
 import Backdrop, { BgType } from "./Backdrop";
 import { Switch } from "@/components/ui/switch";
+import { useCounterStore } from "../../stores/codeStore";
 
 interface SettingProps {
   lang: string;
@@ -23,7 +24,7 @@ interface SettingProps {
   backdropType: BgType;
   updateBackdrop: (type: BgType, backdrop: string) => void;
   lineNum: boolean;
-  updateLineNum: (lineNum: boolean) => void; 
+  updateLineNum: (lineNum: boolean) => void;
 }
 
 const Item = ({ label, children }: { label: string; children: ReactNode }) => {
@@ -36,11 +37,17 @@ const Item = ({ label, children }: { label: string; children: ReactNode }) => {
 };
 
 const Setting = (props: SettingProps) => {
-  const t = useTranslations("code-line.main.setting")
+  const t = useTranslations("code-line.main.setting");
+  const { update, fontSize } = useCounterStore();
+
   return (
     <div className="w-[324px] min-w-[324px] h-full p-4 rounded overflow-y-auto">
       <Item label={t("backdrop")}>
-        <Backdrop type={props.backdropType} value={props.backdrop} onChange={props.updateBackdrop}></Backdrop>
+        <Backdrop
+          type={props.backdropType}
+          value={props.backdrop}
+          onChange={props.updateBackdrop}
+        ></Backdrop>
       </Item>
       <Item label={t("theme")}>
         <SearchSelect
@@ -68,6 +75,23 @@ const Setting = (props: SettingProps) => {
           </SelectContent>
         </Select>
       </Item>
+      <Item label={t("font-size")}>
+        <Select
+          value={String(fontSize)}
+          onValueChange={(fontSize) => update({ fontSize: +fontSize })}
+        >
+          <SelectTrigger className="w-[160px]">
+            <SelectValue placeholder={t("padding")} />
+          </SelectTrigger>
+          <SelectContent>
+            {fontSizeList.map((item) => (
+              <SelectItem key={item.value} value={String(item.value)}>
+                {item.label}px
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </Item>
       <Item label={t("language")}>
         <SearchSelect
           text={t("language")}
@@ -78,7 +102,10 @@ const Setting = (props: SettingProps) => {
         ></SearchSelect>
       </Item>
       <Item label={t("line-number")}>
-        <Switch checked={props.lineNum} onCheckedChange={props.updateLineNum}></Switch>
+        <Switch
+          checked={props.lineNum}
+          onCheckedChange={props.updateLineNum}
+        ></Switch>
       </Item>
     </div>
   );

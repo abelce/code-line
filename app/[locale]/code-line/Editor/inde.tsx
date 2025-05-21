@@ -10,6 +10,7 @@ import CodeViewer, { CodeViewerProps, commonStyle } from "../CodeViewer";
 import { cn } from "@/lib/utils";
 import styles from "./style.module.scss";
 import { getTheme } from "../../config";
+import { useCounterStore } from "../../stores/codeStore";
 
 export enum Mode {
   Edit = "edit",
@@ -22,6 +23,7 @@ export interface EditorProps extends CodeViewerProps {
 
 const Editor = (props: EditorProps) => {
   const ref = useRef<HTMLTextAreaElement>(null);
+  const { fontSize } = useCounterStore();
 
   const handleChange = useCallback(
     (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -36,13 +38,12 @@ const Editor = (props: EditorProps) => {
 
   const caretColor = useMemo((): CSSProperties => {
     const caretColor = getTheme(props.theme)?.caretColor;
+    const obj: CSSProperties = { fontSize: `${fontSize}px` };
     if (caretColor) {
-      return {
-        caretColor: caretColor,
-      };
+      obj.caretColor = caretColor;
     }
-    return {};
-  }, [props.theme]);
+    return obj;
+  }, [props.theme, fontSize]);
 
   const handleInputKeyDown = useCallback(
     (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -68,7 +69,10 @@ const Editor = (props: EditorProps) => {
 
   return (
     <div
-      className={cn("h-full w-full relative overflow-x-hidden overflow-y-auto", styles.editor)}
+      className={cn(
+        "h-full w-full relative overflow-x-hidden overflow-y-auto font-jetBrainsMono",
+        styles.editor
+      )}
       id="code-editor"
     >
       <CodeViewer

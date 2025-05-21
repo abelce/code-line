@@ -10,6 +10,7 @@ import html2canvas from "html2canvas";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslations } from "next-intl";
 import { CopyIcon, DownloadIcon } from "@radix-ui/react-icons";
+import { useSearchParams } from "next/navigation";
 
 function simulateDownloadImageClick(uri: string, filename: string) {
   const link = document.createElement("a");
@@ -35,7 +36,9 @@ function accountForFirefox(click: any, link: HTMLAnchorElement) {
 
 const getImageCanvas = async () => {
   const editorInput = document.getElementById("editorInput");
-  const editorTitle = document.getElementById("editorTitle") as HTMLInputElement;
+  const editorTitle = document.getElementById(
+    "editorTitle"
+  ) as HTMLInputElement;
   if (!editorInput || !editorTitle) {
     return;
   }
@@ -48,7 +51,10 @@ const getImageCanvas = async () => {
       setTimeout(async () => {
         const frame = document.getElementById("frame");
         if (frame) {
-          const canvas = await html2canvas(frame, { allowTaint: false, useCORS: true  });
+          const canvas = await html2canvas(frame, {
+            allowTaint: false,
+            useCORS: true,
+          });
 
           resolve(canvas);
         }
@@ -65,14 +71,18 @@ const getImageCanvas = async () => {
 };
 
 const Exports = () => {
-  const t = useTranslations("code-line.header")
+  const _searchParams = useSearchParams();
+  const t = useTranslations("code-line.header");
   const { toast } = useToast();
   const handleExportPNG = useCallback(async () => {
     const canvas = await getImageCanvas();
     if (canvas instanceof HTMLCanvasElement) {
-      simulateDownloadImageClick(canvas.toDataURL(), "file-name");
+      simulateDownloadImageClick(
+        canvas.toDataURL(),
+        _searchParams.get("title") || "codepic-export"
+      );
     }
-  }, []);
+  }, [_searchParams]);
 
   const handleCopyImage = useCallback(async () => {
     const canvas = await getImageCanvas();
@@ -98,17 +108,19 @@ const Exports = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">
-          <DownloadIcon/>
+          <DownloadIcon />
           {t("export.text")}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem onClick={handleExportPNG}>
-        <DownloadIcon/>
-          {t("export.png")}</DropdownMenuItem>
+          <DownloadIcon />
+          {t("export.png")}
+        </DropdownMenuItem>
         <DropdownMenuItem onClick={handleCopyImage}>
-           <CopyIcon/>
-          {t("export.copy")}</DropdownMenuItem>
+          <CopyIcon />
+          {t("export.copy")}
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

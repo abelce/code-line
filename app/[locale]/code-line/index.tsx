@@ -9,66 +9,66 @@ import Resizeable from "./Resizeable";
 import { Mode } from "./Editor/inde";
 import Header from "./Header";
 import { BgType } from "./Setting/Backdrop";
-
-const format_code = (code: string) => {
-  const buf = Buffer.from(code, "utf-8");
-  return buf.toString("base64");
-};
+import usePrettier from "@/hooks/usePrettier";
+import { useCounterStore } from "../stores/codeStore";
 
 const CodeLine = () => {
+  const {
+    update: updateStore,
+    fontSize,
+    width,
+    lang,
+    code,
+    backdrop,
+    backdropType,
+    padding,
+    lineNum,
+    theme,
+    title,
+  } = useCounterStore();
+
   const defaultStates = useGetInitState();
-  const [code, setCode] = useState(defaultStates.code);
-  const [lang, setLang] = useState(defaultStates.lang);
-  const [theme, setTheme] = useState(defaultStates.theme);
-  const [padding, setPadding] = useState(defaultStates.padding);
-  const [title, setTitle] = useState(defaultStates.title);
-  const [width, setWidth] = useState(defaultStates.width);
-  const [backdrop, setBackdrop] = useState(defaultStates.backdrop);
-  const [backdropType, setBackdropType] = useState(defaultStates.backdropType);
-  const [lineNum, setLineNum] = useState(defaultStates.lineNum);
   const _frameContainerRef = useRef<HTMLDivElement>(null);
   const _frameRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    updateStore(defaultStates as any);
+  }, []);
 
   const updateSearchParams = useUpdateSearchParams();
 
   const updateCode = useCallback(
     (code: string) => {
-      setCode(code);
-      updateSearchParams("code", format_code(code));
+      updateStore({ code });
     },
-    [updateSearchParams]
+    [updateStore]
   );
 
   const updateLng = useCallback(
     (lang: string) => {
-      setLang(lang);
-      updateSearchParams("lang", lang);
+      updateStore({ lang });
     },
-    [updateSearchParams]
+    [updateStore]
   );
 
   const updatePadding = useCallback(
     (padding: number) => {
-      setPadding(padding);
-      updateSearchParams("padding", padding);
+      updateStore({ padding });
     },
-    [updateSearchParams]
+    [updateStore]
   );
 
   const updateTheme = useCallback(
     (theme: string) => {
-      console.log("theme:", theme)
-      setTheme(theme);
-      updateSearchParams("theme", theme);
+      updateStore({ theme });
     },
-    [updateSearchParams]
+    [updateStore]
   );
   const updateTitle = useCallback(
     (title: string) => {
-      setTitle(title);
-      updateSearchParams("title", title);
+      updateStore({ title });
     },
-    [updateSearchParams]
+    [updateStore]
   );
 
   const updateWidth = useCallback(
@@ -80,37 +80,25 @@ const CodeLine = () => {
           Math.min(containerWidth - 64, width),
           frameMinWidth
         );
-        setWidth(_width);
-        updateSearchParams("width", _width);
+        updateStore({ width: _width });
       }
     },
-    [updateSearchParams]
+    [updateStore]
   );
 
   const updateBackdrop = useCallback(
-    (type: BgType, backdrop: string) => {
-      setBackdrop(backdrop);
-      setBackdropType(type);
-      updateSearchParams("backdropType", type);
-      updateSearchParams("backdrop", backdrop);
+    (backdropType: BgType, backdrop: string) => {
+      updateStore({ backdrop, backdropType });
     },
-    [updateSearchParams]
+    [updateStore]
   );
 
   const updateLineNum = useCallback(
     (lineNum: boolean) => {
-      setLineNum(lineNum);
-      updateSearchParams("lineNum", lineNum);
+      updateStore({ lineNum });
     },
-    [updateSearchParams]
+    [updateStore]
   );
-
-  useEffect(() => {
-    updateSearchParams("code", format_code(code));
-    updateSearchParams("backdropType", backdropType);
-    updateSearchParams("backdrop", backdrop);
-    updateSearchParams("padding", String(padding));
-  }, []);
 
   useEffect(() => {
     const calc = () => {
@@ -130,21 +118,22 @@ const CodeLine = () => {
         _frameContainerRef.current?.getBoundingClientRect().width || 0;
       if (width > containerWidth) {
         const _newWidth = Math.max(frameMinWidth, containerWidth);
-        setWidth(_newWidth);
-        updateSearchParams("width", _newWidth);
+        updateStore({ width: _newWidth });
       }
     };
     addEventListener("resize", handleResize);
     return () => {
       removeEventListener("resize", handleResize);
     };
-  }, [updateSearchParams, width]);
+  }, [updateSearchParams, updateStore, width]);
+
+  usePrettier(lang);
 
   return (
     <div className="h-full flex flex-col">
-      <Header></Header>
+      <Header lang={lang} code={code} updateCode={updateCode}></Header>
       <div className="flex-1 relative overflow-hidden flex flex-row">
-      <Setting
+        <Setting
           lang={lang}
           updateLng={updateLng}
           padding={padding}

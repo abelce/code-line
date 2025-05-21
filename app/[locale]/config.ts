@@ -1,6 +1,6 @@
-
 export const paddingList = [4, 8, 16, 24, 32, 48, 64, 72, 80, 88, 96];
 
+// https://app.unpkg.com/prettier@3.5.3/files/plugins
 export const lngList = [
   {
     label: "ABAP",
@@ -17,10 +17,18 @@ export const lngList = [
   {
     label: "Angular HTML",
     value: "angular-html",
+    // prettier: {
+    //   parser: "angular",
+    //   plugins: ["angular", "html"],
+    // },
   },
   {
     label: "Angular TypeScript",
     value: "angular-ts",
+    // prettier: {
+    //   parser: "angular",
+    //   plugins: ["angular", "typescript"],
+    // },
   },
   {
     label: "Apache Conf",
@@ -145,6 +153,10 @@ export const lngList = [
   {
     label: "CSS",
     value: "css",
+    prettier: {
+      parser: "css",
+      plugins: ["babel", "postcss"],
+    },
   },
   {
     label: "CSV",
@@ -293,6 +305,10 @@ export const lngList = [
   {
     label: "GraphQL",
     value: "graphql",
+    prettier: {
+      parser: "graphql",
+      plugins: ["graphql"],
+    },
   },
   {
     label: "Groovy",
@@ -333,10 +349,18 @@ export const lngList = [
   {
     label: "HTML",
     value: "html",
+    prettier: {
+      parser: "html",
+      plugins: ["html"],
+    },
   },
   {
     label: "HTML (Derivative)",
     value: "html-derivative",
+    prettier: {
+      parser: "html",
+      plugins: ["html"],
+    },
   },
   {
     label: "HTTP",
@@ -365,6 +389,10 @@ export const lngList = [
   {
     label: "JavaScript",
     value: "javascript",
+    prettier: {
+      parser: "babel",
+      plugins: ["babel"],
+    },
   },
   {
     label: "Jinja",
@@ -377,14 +405,26 @@ export const lngList = [
   {
     label: "JSON",
     value: "json",
+    prettier: {
+      parser: "json",
+      plugins: ["babel"],
+    },
   },
   {
     label: "JSON5",
     value: "json5",
+    prettier: {
+      parser: "json5",
+      plugins: ["babel"],
+    },
   },
   {
     label: "JSON with Comments",
     value: "jsonc",
+    prettier: {
+      parser: "jsonc",
+      plugins: ["babel"],
+    },
   },
   {
     label: "JSON Lines",
@@ -401,6 +441,10 @@ export const lngList = [
   {
     label: "JSX",
     value: "jsx",
+    prettier: {
+      parser: "__js_expression",
+      plugins: ["babel"],
+    },
   },
   {
     label: "Julia",
@@ -425,6 +469,10 @@ export const lngList = [
   {
     label: "Less",
     value: "less",
+    prettier: {
+      parser: "less",
+      plugins: ["babel", "postcss"],
+    },
   },
   {
     label: "Liquid",
@@ -453,6 +501,10 @@ export const lngList = [
   {
     label: "Markdown",
     value: "markdown",
+    prettier: {
+      parser: "markdown",
+      plugins: ["markdown"],
+    },
   },
   {
     label: "Marko",
@@ -545,6 +597,10 @@ export const lngList = [
   {
     label: "PostCSS",
     value: "postcss",
+    prettier: {
+      parser: "css",
+      plugins: ["babel", "postcss"],
+    },
   },
   {
     label: "PowerQuery",
@@ -657,6 +713,10 @@ export const lngList = [
   {
     label: "SCSS",
     value: "scss",
+    prettier: {
+      parser: "scss",
+      plugins: ["babel", "postcss"],
+    },
   },
   {
     label: "ShaderLab",
@@ -757,6 +817,10 @@ export const lngList = [
   {
     label: "TSX",
     value: "tsx",
+    prettier: {
+      parser: "__ts_expression",
+      plugins: ["babel"],
+    },
   },
   {
     label: "Turtle",
@@ -769,6 +833,10 @@ export const lngList = [
   {
     label: "TypeScript",
     value: "typescript",
+    prettier: {
+      parser: "typescript",
+      plugins: ["typescript"],
+    },
   },
   {
     label: "TypeSpec",
@@ -805,11 +873,23 @@ export const lngList = [
   {
     label: "Vue",
     value: "vue",
+    prettier: {
+      parser: "__vue_expression",
+      plugins: ["babel"],
+    },
   },
   {
-    label: "Vue HTML",
-    value: "vue-html",
+    label: "Vue TypeScript",
+    value: "vue-ts",
+    prettier: {
+      parser: "__vue_ts_expression",
+      plugins: ["babel"],
+    },
   },
+  // {
+  //   label: "Vue HTML",
+  //   value: "vue-html",
+  // },
   {
     label: "Vyper",
     value: "vyper",
@@ -845,6 +925,10 @@ export const lngList = [
   {
     label: "YAML",
     value: "yaml",
+    prettier: {
+      parser: "yaml",
+      plugins: ["yaml"],
+    },
   },
   {
     label: "ZenScript",
@@ -854,7 +938,8 @@ export const lngList = [
     label: "Zig",
     value: "zig",
   },
-];
+].sort();
+
 export const lightThemeCaretColor = "rgb(239 68 68)";
 export const themeList = [
   // { label: "Andromeeda", value: "andromeeda", background: "#23262E" },
@@ -1100,7 +1185,77 @@ export const SITE_DESC: Record<string, string> = {
   zh: "CodePic.cc 是一个将代码片段转为图片的在线工具，可以导出为图片、复制到剪切板，也可以直接通过链接嵌入文档。",
 };
 
-export const SITE_KEYWORDS = "code snippets,images,代码生成图片,导出png"
+export const SITE_KEYWORDS = "code snippets,images,代码生成图片,导出png,代码格式化,code format";
 
 export const isDev = process.env.NODE_ENV === "development";
 
+export const fontSizeList = [
+  {
+    label: "12",
+    value: 12,
+  },
+  {
+    label: "13",
+    value: 13,
+  },
+  {
+    label: "14",
+    value: 14,
+  },
+  {
+    label: "15",
+    value: 15,
+  },
+  {
+    label: "16",
+    value: 16,
+  },
+  {
+    label: "17",
+    value: 17,
+  },
+  {
+    label: "18",
+    value: 18,
+  },
+  {
+    label: "19",
+    value: 19,
+  },
+  {
+    label: "20",
+    value: 20,
+  },
+  {
+    label: "21",
+    value: 21,
+  },
+  {
+    label: "22",
+    value: 22,
+  },
+  {
+    label: "23",
+    value: 23,
+  },
+  {
+    label: "24",
+    value: 24,
+  },
+  {
+    label: "25",
+    value: 25,
+  },
+  {
+    label: "26",
+    value: 26,
+  },
+  {
+    label: "27",
+    value: 27,
+  },
+  {
+    label: "28",
+    value: 28,
+  },
+];

@@ -23,7 +23,8 @@
                 "png": "Export PNG",
                 "copy": "Copy IMAGE",
                 "copy-success": "Copied"
-            }
+            },
+            "format": "Format Code"
         },
         "main": {
             "setting": {
@@ -37,7 +38,8 @@
                 "theme": "Theme",
                 "padding": "Padding",
                 "language": "Language",
-                "line-number": "Line Number"
+                "line-number": "Line Number",
+                "font-size": "Font SIze"
             },
             "content": {
                 "untitled": "Untitled"

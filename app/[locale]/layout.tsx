@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Inter as FontSans } from "next/font/google";
+import { Inter as FontSans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { isDev, SITE_KEYWORDS, SITE_NAME } from "./config";
@@ -26,23 +26,6 @@ const jetBrainsMono = localFont({
   variable: "--font-JetBrainsMono",
   weight: "100 900",
 });
-
-// const sourceCodePro = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
 
 const logoUrl = "/images/logo.png";
 const canonical = "/";

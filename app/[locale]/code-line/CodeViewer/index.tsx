@@ -5,6 +5,7 @@ import styles from "./style.module.scss";
 import { CodeLineEvent, event_calc_frame_height } from "../event";
 import _throttle, { throttle } from "lodash";
 import { getCodeLine, lineNumberTransformer } from "./lineNumberTransformer";
+import { useCounterStore } from "../../stores/codeStore";
 
 export interface CodeViewerProps {
   code: string;
@@ -24,6 +25,7 @@ const CodeViewer = ({
 }: CodeViewerProps) => {
   const [html, setHtml] = useState("");
   const caleRef = useRef(() => {});
+    const { fontSize } = useCounterStore();
 
   useMemo(() => {
     caleRef.current = throttle(() => {
@@ -77,6 +79,7 @@ const CodeViewer = ({
       tabIndex={0}
       dangerouslySetInnerHTML={{ __html: html }}
       className={cn("px-4 py-2", commonStyle, className)}
+      style={{fontSize: `${fontSize}px`}}
     ></div>
   );
 };

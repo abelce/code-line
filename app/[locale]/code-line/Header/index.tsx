@@ -3,8 +3,10 @@ import Exports from "./Exports";
 import LocalSwitcher from "./LocalSwitcher";
 import CopyLink from "./CodeLink";
 import Fallback from "./Fallback";
+import { HeaderProps } from "./interface";
+import FormatCode from "./FormatCode";
 
-const Header = () => {
+const Header = (props: HeaderProps) => {
   return (
     <header className="bg-[rgb(19 19 19)] flex justify-between px-4 py-2 border border-l-0 border-r-0 border-t-0">
       <div className="flex items-center">
@@ -16,6 +18,7 @@ const Header = () => {
       <div className="flex gap-4">
         <Fallback />
         <CopyLink />
+        <FormatCode {...props}/>
         <Embed />
         <Exports />
         <LocalSwitcher />
